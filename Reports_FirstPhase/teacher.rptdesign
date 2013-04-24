@@ -1,0 +1,2031 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 3.7.2.v20120213 Build &lt;3.7.2.v20120214-1408></property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">186</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">186</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">186</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[function ProperCase(str){
+   // split string
+   firstChar = str.substring(0,1);
+   remainChar = str.substring(1);
+
+   // convert case
+   firstChar = firstChar.toUpperCase(); 
+   remainChar = remainChar.toLowerCase();
+
+   return firstChar + remainChar
+
+}
+
+// Make function globally available
+   reportContext.setPersistentGlobalVariable("ProperCase", ProperCase);
+   
+   function removeTag(str){
+   // split string
+   //firstChar = str.substring(0,1);
+   remainChar = str.substring(3, str.length-4);
+
+   // convert case
+  // firstChar = firstChar.toUpperCase(); 
+ //  remainChar = remainChar.toLowerCase();
+
+   return remainChar
+
+}
+
+// Make function globally available
+   reportContext.setPersistentGlobalVariable("removeTag", removeTag);
+   
+   
+   
+   function decide368(level){
+   // split string
+   if(level==1)
+   {
+   temp=3;
+   }
+   else if(level==2)
+   {
+   temp=6;
+   }
+   else
+   {
+   temp=8;
+   }
+  return temp;
+}
+
+// Make function globally available
+   reportContext.setPersistentGlobalVariable("decide368", decide368);
+   
+   
+   function decideLevel(level)
+   {
+   if(level==1)
+   {
+   temp= "Easy";
+   }
+    else if(level==2)
+   {
+   temp= "Medium";
+   }
+   else if(level==3)
+   {
+   temp= "Hard";
+   }
+   return temp;
+   }
+     reportContext.setPersistentGlobalVariable("decideLevel", decideLevel);
+  
+   
+ 
+   ]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">ReportsMainLib.rptlibrary</property>
+            <property name="namespace">ReportsMainLib</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="Batch Id" id="32">
+            <text-property name="helpText">Enter the Batch Id</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">9959</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="30">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/pdfutor_proddb</property>
+            <property name="odaUser">root</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="completedStrandsInfo" id="31">
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">batch_id</property>
+                    <property name="paramName">Batch Id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">UID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">CURRENT_TOPIC_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">STRAND_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">body</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">NO_OF_QUESTIONS_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">RIGHT_QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">sum(qnr.time_end-qnr.time_start)</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="onFetch"><![CDATA[D_STATUS = row["D_STATUS"];
+
+reportContext.setPersistentGlobalVariable("D_STATUS" , D_STATUS);
+
+
+
+ ]]></method>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">UID</property>
+                    <property name="nativeName">UID</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">CURRENT_TOPIC_ID</property>
+                    <property name="nativeName">CURRENT_TOPIC_ID</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">STRAND_ID</property>
+                    <property name="nativeName">STRAND_ID</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">D_STATUS</property>
+                    <property name="nativeName">D_STATUS</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">body</property>
+                    <property name="nativeName">body</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <property name="nativeName">NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="nativeName">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">sum(qnr.time_end-qnr.time_start)</property>
+                    <property name="nativeName">sum(qnr.time_end-qnr.time_start)</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select DISTINCT users.name,uss.uid,uss.current_topic_id,uss.strand_id,uss.D_STATUS as level,n.body as completed , uss.NO_OF_QUESTIONS_ATTEMPTED ,uss.RIGHT_QUES_ATTEMPTED, sum(qnr.time_end-qnr.time_start)
+from user_strand_status uss,users , node_revisions n, quiz_node_results qnr
+where  users.uid=uss.UID and  (uss.current_topic_id, uss.uid) in (select current_topic_id, uid from user_strand_status where end_mastery_date is null and batch_id= ? ) and uss.END_MASTERY_DATE is not null and n.nid=uss.STRAND_ID and qnr.nid=uss.hw_id group by uss.uid, uss.strand_id, uss.d_status ]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>name</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>60</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>name</design:label>
+            <design:formattingHints>
+              <design:displaySize>60</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>UID</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>uid</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>uid</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CURRENT_TOPIC_ID</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>current_topic_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>current_topic_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>STRAND_ID</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>strand_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>strand_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>D_STATUS</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>2</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>level</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>level</design:label>
+            <design:formattingHints>
+              <design:displaySize>2</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>body</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>715827882</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>completed</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>completed</design:label>
+            <design:formattingHints>
+              <design:displaySize>715827882</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>NO_OF_QUESTIONS_ATTEMPTED</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>NO_OF_QUESTIONS_ATTEMPTED</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>NO_OF_QUESTIONS_ATTEMPTED</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>RIGHT_QUES_ATTEMPTED</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>RIGHT_QUES_ATTEMPTED</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>RIGHT_QUES_ATTEMPTED</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Current Strand Status" id="107">
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">Batch Id</property>
+                    <property name="paramName">Batch Id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">max(USR_ST_ID)</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">UID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">STRAND_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">body</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">NO_OF_QUESTIONS_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">RIGHT_QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">max(USR_ST_ID)</property>
+                    <property name="nativeName">max(USR_ST_ID)</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">UID</property>
+                    <property name="nativeName">UID</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">STRAND_ID</property>
+                    <property name="nativeName">STRAND_ID</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">D_STATUS</property>
+                    <property name="nativeName">D_STATUS</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">body</property>
+                    <property name="nativeName">body</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <property name="nativeName">NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="nativeName">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select DISTINCT max(USR_ST_ID), uss.uid, users.name, uss.strand_id, uss.D_STATUS as level,n.body as CurrentStrand,uss.NO_OF_QUESTIONS_ATTEMPTED,uss.RIGHT_QUES_ATTEMPTED
+from user_strand_status uss,users , node_revisions n
+where batch_id=? and users.uid=uss.UID and  n.nid=uss.STRAND_ID and uss.uid=users.uid and end_mastery_date is null group by uid order by uss.strand_id, uss.d_status ]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Practice time info" id="108">
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">BatchId</property>
+                    <property name="paramName">Batch Id</property>
+                    <property name="dataType">string</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">sum(qnr.time_end-qnr.time_start)</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">UID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">sum(qnr.time_end-qnr.time_start)</property>
+                    <property name="nativeName">sum(qnr.time_end-qnr.time_start)</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">UID</property>
+                    <property name="nativeName">UID</property>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select sum(qnr.time_end-qnr.time_start), uss.uid from user_strand_status uss,quiz_node_results qnr 
+where uss.batch_id=? and uss.HW_ID=qnr.nid and qnr.time_end<>0 group by uss.strand_id, uss.uid]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>UID</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>uid</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>uid</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>STRAND_ID</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>strand_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>strand_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>sum(qnr.time_end-qnr.time_start)</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>3</design:nativeDataTypeCode>
+            <design:precision>34</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>sum(qnr.time_end-qnr.time_start)</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>sum(qnr.time_end-qnr.time_start)</design:label>
+            <design:formattingHints>
+              <design:displaySize>35</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <joint-data-set name="TempStudentInfo" id="109">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">Current Strand Status::body</property>
+                    <property name="alias">Current Strand Status::body</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">Current Strand Status::body</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">completedStrandsInfo::body</property>
+                    <property name="alias">completedStrandsInfo::body</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">completedStrandsInfo::body</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">completedStrandsInfo::STRAND_ID</property>
+                    <property name="alias">STRAND_ID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">completedStrandsInfo::STRAND_ID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <property name="alias">NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">completedStrandsInfo::D_STATUS</property>
+                    <property name="alias">completedStrandsInfo::D_STATUS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">completedStrandsInfo::D_STATUS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">completedStrandsInfo::name</property>
+                    <property name="alias">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">completedStrandsInfo::name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">completedStrandsInfo::CURRENT_TOPIC_ID</property>
+                    <property name="alias">CURRENT_TOPIC_ID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">completedStrandsInfo::CURRENT_TOPIC_ID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">completedStrandsInfo::RIGHT_QUES_ATTEMPTED</property>
+                    <property name="alias">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">completedStrandsInfo::RIGHT_QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">completedStrandsInfo::UID</property>
+                    <property name="alias">completedStrandsInfo::UID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">completedStrandsInfo::UID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Current Strand Status::UID</property>
+                    <property name="alias">Current Strand Status::UID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Current Strand Status::UID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Current Strand Status::max(USR_ST_ID)</property>
+                    <property name="alias">max(USR_ST_ID)</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Current Strand Status::max(USR_ST_ID)</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Current Strand Status::D_STATUS</property>
+                    <property name="alias">Current Strand Status::D_STATUS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Current Strand Status::D_STATUS</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">completedStrandsInfo::batch_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <property name="isOptional">false</property>
+                    <property name="allowNull">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">Current Strand Status::Batch Id</property>
+                    <property name="dataType">string</property>
+                    <property name="position">2</property>
+                    <property name="isOptional">false</property>
+                    <property name="allowNull">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">completedStrandsInfo::name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">completedStrandsInfo::UID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">completedStrandsInfo::CURRENT_TOPIC_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">completedStrandsInfo::STRAND_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">completedStrandsInfo::D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">completedStrandsInfo::body</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">completedStrandsInfo::RIGHT_QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">completedStrandsInfo::sum(qnr.time_end-qnr.time_start)</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">Current Strand Status::max(USR_ST_ID)</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">Current Strand Status::UID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">Current Strand Status::D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">Current Strand Status::body</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">Current Strand Status::NO_OF_QUESTIONS_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">Current Strand Status::RIGHT_QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <simple-property-list name="dataSets">
+                <value>completedStrandsInfo</value>
+                <value>Current Strand Status</value>
+            </simple-property-list>
+            <list-property name="joinConditions">
+                <structure>
+                    <property name="joinType">left-out</property>
+                    <property name="joinOperator">eq</property>
+                    <property name="leftDataSet">completedStrandsInfo</property>
+                    <property name="rightDataSet">Current Strand Status</property>
+                    <expression name="leftExpression">dataSetRow["UID"]</expression>
+                    <expression name="rightExpression">dataSetRow["UID"]</expression>
+                </structure>
+            </list-property>
+        </joint-data-set>
+        <joint-data-set name="FinalStudentInfo" id="110">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">TempStudentInfo::completedStrandsInfo::CURRENT_TOPIC_ID</property>
+                    <property name="alias">completedStrandsInfo::CURRENT_TOPIC_ID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TempStudentInfo::completedStrandsInfo::CURRENT_TOPIC_ID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::Current Strand Status::body</property>
+                    <property name="alias">Current Strand Status::body</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">TempStudentInfo::Current Strand Status::body</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::completedStrandsInfo::body</property>
+                    <property name="alias">completedStrandsInfo::body</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">TempStudentInfo::completedStrandsInfo::body</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <property name="alias">completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TempStudentInfo::completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::completedStrandsInfo::RIGHT_QUES_ATTEMPTED</property>
+                    <property name="alias">completedStrandsInfo::RIGHT_QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TempStudentInfo::completedStrandsInfo::RIGHT_QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::completedStrandsInfo::name</property>
+                    <property name="alias">completedStrandsInfo::name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">TempStudentInfo::completedStrandsInfo::name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::completedStrandsInfo::STRAND_ID</property>
+                    <property name="alias">completedStrandsInfo::STRAND_ID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TempStudentInfo::completedStrandsInfo::STRAND_ID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::completedStrandsInfo::D_STATUS</property>
+                    <property name="alias">completedStrandsInfo::D_STATUS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TempStudentInfo::completedStrandsInfo::D_STATUS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Practice time info::UID</property>
+                    <property name="alias">UID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Practice time info::UID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::completedStrandsInfo::UID</property>
+                    <property name="alias">completedStrandsInfo::UID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TempStudentInfo::completedStrandsInfo::UID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::Current Strand Status::max(USR_ST_ID)</property>
+                    <property name="alias">Current Strand Status::max(USR_ST_ID)</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TempStudentInfo::Current Strand Status::max(USR_ST_ID)</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::Current Strand Status::UID</property>
+                    <property name="alias">Current Strand Status::UID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TempStudentInfo::Current Strand Status::UID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">TempStudentInfo::Current Strand Status::D_STATUS</property>
+                    <property name="alias">Current Strand Status::D_STATUS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">TempStudentInfo::Current Strand Status::D_STATUS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Practice time info::sum(qnr.time_end-qnr.time_start)</property>
+                    <property name="alias">sum(qnr.time_end-qnr.time_start)</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Practice time info::sum(qnr.time_end-qnr.time_start)</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">TempStudentInfo::completedStrandsInfo::batch_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <property name="isOptional">false</property>
+                    <property name="allowNull">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">TempStudentInfo::Current Strand Status::Batch Id</property>
+                    <property name="dataType">string</property>
+                    <property name="position">2</property>
+                    <property name="isOptional">false</property>
+                    <property name="allowNull">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">Practice time info::BatchId</property>
+                    <property name="dataType">string</property>
+                    <property name="position">3</property>
+                    <property name="isOptional">false</property>
+                    <property name="allowNull">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">TempStudentInfo::completedStrandsInfo::name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">TempStudentInfo::completedStrandsInfo::UID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">TempStudentInfo::completedStrandsInfo::CURRENT_TOPIC_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">TempStudentInfo::completedStrandsInfo::STRAND_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">TempStudentInfo::completedStrandsInfo::D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">TempStudentInfo::completedStrandsInfo::body</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">TempStudentInfo::completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">TempStudentInfo::completedStrandsInfo::RIGHT_QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">TempStudentInfo::Current Strand Status::max(USR_ST_ID)</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">TempStudentInfo::Current Strand Status::UID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">TempStudentInfo::Current Strand Status::D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">TempStudentInfo::Current Strand Status::body</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">Practice time info::sum(qnr.time_end-qnr.time_start)</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">Practice time info::UID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <simple-property-list name="dataSets">
+                <value>TempStudentInfo</value>
+                <value>Practice time info</value>
+            </simple-property-list>
+            <list-property name="joinConditions">
+                <structure>
+                    <property name="joinType">inner</property>
+                    <property name="joinOperator">eq</property>
+                    <property name="leftDataSet">TempStudentInfo</property>
+                    <property name="rightDataSet">Practice time info</property>
+                    <expression name="leftExpression">dataSetRow["completedStrandsInfo::UID"]</expression>
+                    <expression name="rightExpression">dataSetRow["UID"]</expression>
+                </structure>
+            </list-property>
+        </joint-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="batchName" id="186">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">nid</property>
+                    <property name="paramName">Batch Id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue" type="javascript">9263</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">title</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="onFetch"><![CDATA[current_batch_title = row["title"];
+reportContext.setPersistentGlobalVariable("current_batch_title" , current_batch_title);]]></method>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">title</property>
+                    <property name="nativeName">title</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select title 
+from node 
+where type='batch' and nid=?]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="FutorMasterPage" id="7" extends="ReportsMainLib.FutorMasterPage">
+            <overridden-values>
+                <ref-entry baseId="28" id="28"/>
+                <ref-entry baseId="29" id="29"/>
+            </overridden-values>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <data id="313">
+            <property name="dataSet">batchName</property>
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">all</property>
+                    <expression name="valueExpr" type="javascript">true</expression>
+                </structure>
+            </list-property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">title</property>
+                    <text-property name="displayName">title</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["title"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">title</property>
+        </data>
+        <label id="40"/>
+        <text id="33">
+            <property name="color">teal</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<CENTER>
+<B>
+<h2>Collective detail of <VALUE-OF>reportContext.getPersistentGlobalVariable("current_batch_title")</VALUE-OF>                         batch </h2> 
+</B>
+</CENTER>
+
+
+]]></text-property>
+        </text>
+        <text id="415">
+            <property name="marginLeft">6%</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[ <FONT size="3" color="teal" face="">
+The following table shows all the current strands of this topic along with the students working on each strand: -
+</FONT>]]></text-property>
+        </text>
+        <label id="419"/>
+        <table id="396">
+            <property name="marginLeft">8%</property>
+            <property name="width">6.489583333333333in</property>
+            <property name="dataSet">Current Strand Status</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">body</property>
+                    <text-property name="displayName">body</text-property>
+                    <expression name="expression" type="javascript">removeTag(dataSetRow["body"])</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">D_STATUS</property>
+                    <text-property name="displayName">D_STATUS</text-property>
+                    <expression name="expression" type="javascript">decideLevel(dataSetRow["D_STATUS"])</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">name</property>
+                    <text-property name="displayName">name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">max(USR_ST_ID)</property>
+                    <text-property name="displayName">max(USR_ST_ID)</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["max(USR_ST_ID)"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">UID</property>
+                    <text-property name="displayName">UID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["UID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">STRAND_ID</property>
+                    <text-property name="displayName">STRAND_ID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["STRAND_ID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">body_1</property>
+                    <text-property name="displayName">body</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["body"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <text-property name="displayName">NO_OF_QUESTIONS_ATTEMPTED</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["NO_OF_QUESTIONS_ATTEMPTED"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">RIGHT_QUES_ATTEMPTED</property>
+                    <text-property name="displayName">RIGHT_QUES_ATTEMPTED</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["RIGHT_QUES_ATTEMPTED"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <column id="409">
+                <property name="width">2.71875in</property>
+            </column>
+            <column id="410">
+                <property name="width">1.2395833333333333in</property>
+            </column>
+            <column id="411">
+                <property name="width">2.53125in</property>
+            </column>
+            <header>
+                <row id="397">
+                    <cell id="398">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#C0C0C0</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#C0C0C0</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#C0C0C0</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="412">
+                            <property name="fontWeight">bold</property>
+                            <property name="color">teal</property>
+                            <text-property name="text">Strand Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="399">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#C0C0C0</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#C0C0C0</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#C0C0C0</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="413">
+                            <property name="fontWeight">bold</property>
+                            <property name="color">teal</property>
+                            <text-property name="text">Strand Level</text-property>
+                        </label>
+                    </cell>
+                    <cell id="400">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#C0C0C0</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#C0C0C0</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#C0C0C0</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="414">
+                            <property name="fontWeight">bold</property>
+                            <property name="color">teal</property>
+                            <text-property name="text">Student Name</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="401">
+                    <cell id="402">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#C0C0C0</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#C0C0C0</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#C0C0C0</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="420">
+                            <property name="marginLeft">10%</property>
+                            <property name="resultSetColumn">body</property>
+                        </data>
+                    </cell>
+                    <cell id="403">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#C0C0C0</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#C0C0C0</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#C0C0C0</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="421">
+                            <property name="marginLeft">40%</property>
+                            <property name="resultSetColumn">D_STATUS</property>
+                        </data>
+                    </cell>
+                    <cell id="404">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#C0C0C0</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#C0C0C0</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#C0C0C0</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="422">
+                            <property name="marginLeft">30%</property>
+                            <property name="resultSetColumn">name</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="405">
+                    <cell id="406">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#C0C0C0</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#C0C0C0</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#C0C0C0</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="407">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#C0C0C0</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#C0C0C0</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#C0C0C0</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                    <cell id="408">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#C0C0C0</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#C0C0C0</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#C0C0C0</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <label id="425"/>
+        <label id="423">
+            <property name="fontSize">12pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">teal</property>
+            <property name="textUnderline">underline</property>
+            <property name="marginLeft">6%</property>
+            <property name="marginRight">8pt</property>
+            <text-property name="text">Detailed information of each student follows: -</text-property>
+        </label>
+        <label id="416"/>
+        <list id="198">
+            <property name="dataSet">TempStudentInfo</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">completedStrandsInfo::name</property>
+                    <text-property name="displayName">completedStrandsInfo::name</text-property>
+                    <expression name="expression" type="javascript">ProperCase(dataSetRow["completedStrandsInfo::name"])</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::UID</property>
+                    <text-property name="displayName">completedStrandsInfo::UID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["completedStrandsInfo::UID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::CURRENT_TOPIC_ID</property>
+                    <text-property name="displayName">completedStrandsInfo::CURRENT_TOPIC_ID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["completedStrandsInfo::CURRENT_TOPIC_ID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::STRAND_ID</property>
+                    <text-property name="displayName">completedStrandsInfo::STRAND_ID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["completedStrandsInfo::STRAND_ID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::D_STATUS</property>
+                    <text-property name="displayName">completedStrandsInfo::D_STATUS</text-property>
+                    <expression name="expression" type="javascript">decideLevel(dataSetRow["completedStrandsInfo::D_STATUS"])</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::body</property>
+                    <text-property name="displayName">completedStrandsInfo::body</text-property>
+                    <expression name="expression" type="javascript">removeTag(dataSetRow["completedStrandsInfo::body"])</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <text-property name="displayName">completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED"]</expression>
+                    <property name="dataType">integer</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::RIGHT_QUES_ATTEMPTED</property>
+                    <text-property name="displayName">completedStrandsInfo::RIGHT_QUES_ATTEMPTED</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["completedStrandsInfo::RIGHT_QUES_ATTEMPTED"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::sum(qnr.time_end-qnr.time_start)</property>
+                    <text-property name="displayName">completedStrandsInfo::sum(qnr.time_end-qnr.time_start)</text-property>
+                    <expression name="expression" type="javascript">Math.round((dataSetRow["completedStrandsInfo::sum(qnr.time_end-qnr.time_start)"])/60*100)/100</expression>
+                    <property name="dataType">decimal</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Current Strand Status::max(USR_ST_ID)</property>
+                    <text-property name="displayName">Current Strand Status::max(USR_ST_ID)</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Current Strand Status::max(USR_ST_ID)"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Current Strand Status::UID</property>
+                    <text-property name="displayName">Current Strand Status::UID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Current Strand Status::UID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Current Strand Status::D_STATUS</property>
+                    <text-property name="displayName">Current Strand Status::D_STATUS</text-property>
+                    <expression name="expression" type="javascript">decideLevel(dataSetRow["Current Strand Status::D_STATUS"])</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Current Strand Status::body</property>
+                    <text-property name="displayName">Current Strand Status::body</text-property>
+                    <expression name="expression" type="javascript">removeTag(dataSetRow["Current Strand Status::body"])</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::name_1</property>
+                    <text-property name="displayName">completedStrandsInfo::name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["completedStrandsInfo::name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::sum(qnr.time_end-qnr.time_start)_1</property>
+                    <text-property name="displayName">completedStrandsInfo::sum(qnr.time_end-qnr.time_start)</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["completedStrandsInfo::sum(qnr.time_end-qnr.time_start)"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">Current Strand Status::body_1</property>
+                    <text-property name="displayName">Current Strand Status::body</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Current Strand Status::body"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">completedStrandsInfo::body_1</property>
+                    <text-property name="displayName">completedStrandsInfo::body</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["completedStrandsInfo::body"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">Current Strand Status::NO_OF_QUESTIONS_ATTEMPTED</property>
+                    <text-property name="displayName">Current Strand Status::NO_OF_QUESTIONS_ATTEMPTED</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Current Strand Status::NO_OF_QUESTIONS_ATTEMPTED"]</expression>
+                    <property name="dataType">integer</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Current Strand Status::RIGHT_QUES_ATTEMPTED</property>
+                    <text-property name="displayName">Current Strand Status::RIGHT_QUES_ATTEMPTED</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Current Strand Status::RIGHT_QUES_ATTEMPTED"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">ideal_practice_time</property>
+                    <text-property name="displayName">completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</text-property>
+                    <expression name="expression" type="javascript">decide368(dataSetRow["completedStrandsInfo::D_STATUS"])*dataSetRow["completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED"]</expression>
+                    <property name="dataType">integer</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <group id="199">
+                <property name="groupName">Student Name</property>
+                <expression name="keyExpr" type="javascript">row["completedStrandsInfo::name"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["completedStrandsInfo::name"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <header>
+                    <grid id="363">
+                        <column id="364"/>
+                        <column id="365"/>
+                        <row id="366">
+                            <cell id="367">
+                                <label id="386">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="color">teal</property>
+                                    <property name="marginTop">0%</property>
+                                    <property name="marginLeft">15%</property>
+                                    <text-property name="text">Student Name: -</text-property>
+                                </label>
+                            </cell>
+                            <cell id="368">
+                                <data id="391">
+                                    <property name="marginLeft">0%</property>
+                                    <property name="marginRight">15%</property>
+                                    <property name="resultSetColumn">completedStrandsInfo::name</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="369">
+                            <cell id="370">
+                                <label id="387">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="color">teal</property>
+                                    <property name="marginLeft">15%</property>
+                                    <text-property name="text">Currently Working on Strand: -</text-property>
+                                </label>
+                            </cell>
+                            <cell id="371">
+                                <data id="392">
+                                    <property name="marginRight">15%</property>
+                                    <property name="resultSetColumn">Current Strand Status::body</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="372">
+                            <cell id="373">
+                                <label id="388">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="color">teal</property>
+                                    <property name="marginLeft">15%</property>
+                                    <text-property name="text">Level of questions: -</text-property>
+                                </label>
+                            </cell>
+                            <cell id="374">
+                                <data id="393">
+                                    <property name="marginRight">15%</property>
+                                    <property name="resultSetColumn">Current Strand Status::D_STATUS</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="375">
+                            <cell id="376">
+                                <label id="389">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="color">teal</property>
+                                    <property name="marginLeft">15%</property>
+                                    <text-property name="text">Number of questions attempted on this level: -</text-property>
+                                </label>
+                            </cell>
+                            <cell id="377">
+                                <data id="394">
+                                    <property name="marginRight">15%</property>
+                                    <property name="resultSetColumn">Current Strand Status::NO_OF_QUESTIONS_ATTEMPTED</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="378">
+                            <cell id="379">
+                                <label id="390">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="color">teal</property>
+                                    <property name="marginLeft">15%</property>
+                                    <text-property name="text">Number of correct answers: - </text-property>
+                                </label>
+                            </cell>
+                            <cell id="380">
+                                <data id="395">
+                                    <property name="marginRight">15%</property>
+                                    <property name="resultSetColumn">Current Strand Status::RIGHT_QUES_ATTEMPTED</property>
+                                </data>
+                            </cell>
+                        </row>
+                        <row id="381">
+                            <cell id="382"/>
+                            <cell id="383"/>
+                        </row>
+                    </grid>
+                    <label id="294"/>
+                    <table id="209">
+                        <property name="marginLeft">8%</property>
+                        <property name="marginBottom">5pt</property>
+                        <property name="marginRight">0%</property>
+                        <property name="width">6.708333333333333in</property>
+                        <column id="228">
+                            <property name="width">2.4166666666666665in</property>
+                        </column>
+                        <column id="229">
+                            <property name="width">0.75in</property>
+                        </column>
+                        <column id="230">
+                            <property name="width">0.8645833333333334in</property>
+                        </column>
+                        <column id="231">
+                            <property name="width">0.78125in</property>
+                        </column>
+                        <column id="232">
+                            <property name="width">0.8541666666666666in</property>
+                        </column>
+                        <column id="429">
+                            <property name="width">1.0416666666666667in</property>
+                        </column>
+                        <header>
+                            <row id="210">
+                                <property name="height">0.3958333333333333in</property>
+                                <cell id="211">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <label id="233">
+                                        <property name="fontWeight">bold</property>
+                                        <property name="color">teal</property>
+                                        <property name="marginTop">0%</property>
+                                        <property name="marginBottom">5%</property>
+                                        <text-property name="text">Strands completed in current topic</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="212">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <label id="234">
+                                        <property name="fontWeight">bold</property>
+                                        <property name="color">teal</property>
+                                        <text-property name="text">Level</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="213">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <label id="235">
+                                        <property name="fontWeight">bold</property>
+                                        <property name="color">teal</property>
+                                        <text-property name="text"> Questions Attempted</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="214">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <label id="236">
+                                        <property name="fontWeight">bold</property>
+                                        <property name="color">teal</property>
+                                        <text-property name="text">Right Answers</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="215">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <label id="237">
+                                        <property name="fontWeight">bold</property>
+                                        <property name="color">teal</property>
+                                        <text-property name="text">Practice Time(min.)</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="426">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <label id="430">
+                                        <property name="fontWeight">bold</property>
+                                        <property name="color">teal</property>
+                                        <text-property name="text">Ideal Practice time(min.)</text-property>
+                                    </label>
+                                </cell>
+                            </row>
+                        </header>
+                        <detail>
+                            <row id="216">
+                                <property name="height">0.5208333333333334in</property>
+                                <cell id="217">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <data id="238">
+                                        <property name="resultSetColumn">completedStrandsInfo::body</property>
+                                    </data>
+                                </cell>
+                                <cell id="218">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <data id="239">
+                                        <property name="marginLeft">20%</property>
+                                        <property name="resultSetColumn">completedStrandsInfo::D_STATUS</property>
+                                    </data>
+                                </cell>
+                                <cell id="219">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <data id="240">
+                                        <property name="marginLeft">40%</property>
+                                        <property name="resultSetColumn">completedStrandsInfo::NO_OF_QUESTIONS_ATTEMPTED</property>
+                                    </data>
+                                </cell>
+                                <cell id="220">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <data id="241">
+                                        <property name="marginLeft">40%</property>
+                                        <property name="resultSetColumn">completedStrandsInfo::RIGHT_QUES_ATTEMPTED</property>
+                                    </data>
+                                </cell>
+                                <cell id="221">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <data id="242">
+                                        <property name="marginLeft">40%</property>
+                                        <property name="resultSetColumn">completedStrandsInfo::sum(qnr.time_end-qnr.time_start)</property>
+                                    </data>
+                                </cell>
+                                <cell id="427">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <data id="435">
+                                        <property name="marginLeft">40%</property>
+                                        <property name="resultSetColumn">ideal_practice_time</property>
+                                    </data>
+                                </cell>
+                            </row>
+                        </detail>
+                        <footer>
+                            <row id="222">
+                                <property name="height">0.010416666666666666in</property>
+                                <cell id="223">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                </cell>
+                                <cell id="224">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                </cell>
+                                <cell id="225">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                </cell>
+                                <cell id="226">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                </cell>
+                                <cell id="227">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                </cell>
+                                <cell id="428">
+                                    <property name="borderBottomColor">#C0C0C0</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#C0C0C0</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#C0C0C0</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#C0C0C0</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                </cell>
+                            </row>
+                        </footer>
+                    </table>
+                    <label id="314"/>
+                    <label id="311"/>
+                </header>
+            </group>
+        </list>
+    </body>
+    <property name="pageVariables">
+        <variable-element name="idealPracticeTime">
+            <expression name="value" type="javascript">calIdealTime(reportContext.getPersistentGlobalVariable("level"))</expression>
+            <property name="type">report</property>
+        </variable-element>
+    </property>
+</report>

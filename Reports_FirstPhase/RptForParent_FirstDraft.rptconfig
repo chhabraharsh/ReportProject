@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__Student_id_11_0</property>
+            <property name="value">294</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Student_sex_13_1</property>
+            <property name="value">Male</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Student_name_15_2</property>
+            <property name="value">saurabh</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Student_teacher_name_16_3</property>
+            <property name="value">saurabh</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__StartDate_146_4</property>
+            <property name="value">2012-00-01 24:00:00</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__EndDate_147_5</property>
+            <property name="value">2012-09-26 00:00:00</property>
+        </structure>
+        <structure>
+            <property name="name">Student_id_11_6</property>
+            <property name="value">294</property>
+        </structure>
+        <structure>
+            <property name="name">Student_id_11_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">EndDate_147_7</property>
+            <property name="value">2012-01-26 00:00:00.000</property>
+        </structure>
+        <structure>
+            <property name="name">EndDate_147_type_</property>
+            <property name="value">dateTime</property>
+        </structure>
+        <structure>
+            <property name="name">StartDate_146_8</property>
+            <property name="value">2012-01-01 00:00:00.000</property>
+        </structure>
+        <structure>
+            <property name="name">StartDate_146_type_</property>
+            <property name="value">dateTime</property>
+        </structure>
+        <structure>
+            <property name="name">Student_name_15_9</property>
+            <property name="value">saurabh</property>
+        </structure>
+        <structure>
+            <property name="name">Student_name_15_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">Student_teacher_name_16_10</property>
+            <property name="value">saurabh</property>
+        </structure>
+        <structure>
+            <property name="name">Student_teacher_name_16_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">Student_sex_13_11</property>
+            <property name="value">M</property>
+        </structure>
+        <structure>
+            <property name="name">Student_sex_13_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

@@ -1,0 +1,2121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 3.7.2.v20120213 Build &lt;3.7.2.v20120214-1408></property>
+    <property name="units">in</property>
+    <property name="theme">defaultTheme</property>
+    <parameters>
+        <parameter-group name="StudentInfo" id="15">
+            <text-property name="displayName">Information about the student</text-property>
+            <parameters>
+                <scalar-parameter name="Student_id" id="16">
+                    <text-property name="helpText">Please specify the uid of student</text-property>
+                    <property name="valueType">static</property>
+                    <property name="dataType">integer</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Student_sex" id="17">
+                    <text-property name="helpText">Please enter male / female</text-property>
+                    <property name="valueType">static</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList">
+                        <structure>
+                            <property name="value">M</property>
+                            <property name="label">Male</property>
+                        </structure>
+                        <structure>
+                            <property name="value">F</property>
+                            <property name="label">Female</property>
+                        </structure>
+                    </list-property>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">list-box</property>
+                    <property name="mustMatch">true</property>
+                    <property name="fixedOrder">true</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Student_name" id="18">
+                    <text-property name="helpText">Please enter the name of student</text-property>
+                    <property name="valueType">static</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="Student_teacher_name" id="19">
+                    <text-property name="helpText">Please enter the name of student's teacher</text-property>
+                    <property name="valueType">static</property>
+                    <property name="dataType">string</property>
+                    <property name="distinct">true</property>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Unformatted</property>
+                    </structure>
+                </scalar-parameter>
+            </parameters>
+        </parameter-group>
+        <parameter-group name="ReportDuration" id="20">
+            <text-property name="displayName">start date and end date for the report</text-property>
+            <parameters>
+                <scalar-parameter name="StartDate" id="21">
+                    <property name="valueType">static</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">2012-01-01</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Custom</property>
+                        <property name="pattern">yyyy-mm-dd kk:mm:ss</property>
+                    </structure>
+                </scalar-parameter>
+                <scalar-parameter name="EndDate" id="22">
+                    <property name="valueType">static</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="distinct">true</property>
+                    <simple-property-list name="defaultValue">
+                        <value type="constant">2012-01-02</value>
+                    </simple-property-list>
+                    <list-property name="selectionList"/>
+                    <property name="paramType">simple</property>
+                    <property name="controlType">text-box</property>
+                    <structure name="format">
+                        <property name="category">Custom</property>
+                        <property name="pattern">yyyy-mm-dd kk:mm:ss</property>
+                    </structure>
+                </scalar-parameter>
+            </parameters>
+        </parameter-group>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="9">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/futortables</property>
+            <property name="odaUser">root</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="CurrentCategoryId" id="10">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">CATEGORY_ID</property>
+                    <property name="alias">category_id</property>
+                    <property name="analysis">measure</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">student_id</property>
+                    <property name="paramName">Student_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue" type="javascript">1</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">category_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="onFetch"><![CDATA[Current_category_id = row["category_id"];
+
+reportContext.setPersistentGlobalVariable("Current_category_id" , Current_category_id.toString());]]></method>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">CATEGORY_ID</property>
+                    <property name="nativeName">CATEGORY_ID</property>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select distinct(category_id) 
+from user_topic_status where 
+uid=? and end_time=0]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="CurrentCategoryName" id="11">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">category_name</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">category_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue" type="javascript">reportContext.getPersistentGlobalVariable("Current_category_id")</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="onFetch"><![CDATA[Current_category_name = row["name"];
+
+reportContext.setPersistentGlobalVariable("Current_category_name" , Current_category_name);]]></method>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">name</property>
+                    <property name="nativeName">name</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select name as category_name 
+from term_data 
+where tid=?]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>tid</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>category_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>category_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>name</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>category_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>category_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="CurrentStudentPerformance" id="12">
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">currentDate</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue" type="javascript">params["EndDate"].value</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">rptup_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">uid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">course_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">batch_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">on_date</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">day_no</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">no_of_strands_completed</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">cumulative_no_of_strands_completed</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">target_no_of_strands</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">cumulative_target_no_of_strands_completed</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">category_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">category_caltime</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">no_of_questions_attempted</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">right_questions_attempted</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">time_spent_on_practice</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="onFetch"><![CDATA[target_strands = row["cumulative_target_no_of_strands_completed"];
+
+mastered_strands = row["cumulative_no_of_strands_completed"];
+
+if (mastered_strands >= target_strands) {
+	reportContext.setPersistentGlobalVariable("target","T");
+	} else {
+		reportContext.setPersistentGlobalVariable("target","F");
+		}]]></method>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">rptup_id</property>
+                    <property name="nativeName">rptup_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">uid</property>
+                    <property name="nativeName">uid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">course_id</property>
+                    <property name="nativeName">course_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">batch_id</property>
+                    <property name="nativeName">batch_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">on_date</property>
+                    <property name="nativeName">on_date</property>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">day_no</property>
+                    <property name="nativeName">day_no</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">no_of_strands_completed</property>
+                    <property name="nativeName">no_of_strands_completed</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">cumulative_no_of_strands_completed</property>
+                    <property name="nativeName">cumulative_no_of_strands_completed</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">target_no_of_strands</property>
+                    <property name="nativeName">target_no_of_strands</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">cumulative_target_no_of_strands_completed</property>
+                    <property name="nativeName">cumulative_target_no_of_strands_completed</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">category_id</property>
+                    <property name="nativeName">category_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">category_caltime</property>
+                    <property name="nativeName">category_caltime</property>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">no_of_questions_attempted</property>
+                    <property name="nativeName">no_of_questions_attempted</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">right_questions_attempted</property>
+                    <property name="nativeName">right_questions_attempted</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">time_spent_on_practice</property>
+                    <property name="nativeName">time_spent_on_practice</property>
+                    <property name="dataType">float</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select *
+from rpt_user_performances 
+where on_date=?]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>rptup_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>rptup_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>rptup_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>uid</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>uid</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>uid</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>course_id</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>course_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>course_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>batch_id</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>batch_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>batch_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>on_date</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>on_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>on_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>19</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>day_no</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>day_no</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>day_no</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>no_of_strands_completed</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>no_of_strands_completed</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>no_of_strands_completed</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>cumulative_no_of_strands_completed</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>cumulative_no_of_strands_completed</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>cumulative_no_of_strands_completed</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>target_no_of_strands</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>target_no_of_strands</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>target_no_of_strands</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>cumulative_target_no_of_strands_completed</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>cumulative_target_no_of_strands_completed</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>cumulative_target_no_of_strands_completed</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>category_id</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>category_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>category_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>category_caltime</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>8</design:nativeDataTypeCode>
+            <design:precision>22</design:precision>
+            <design:scale>31</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>category_caltime</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>category_caltime</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>no_of_questions_attempted</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>no_of_questions_attempted</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>no_of_questions_attempted</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>right_questions_attempted</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>right_questions_attempted</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>right_questions_attempted</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>time_spent_on_practice</design:name>
+              <design:position>15</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>8</design:nativeDataTypeCode>
+            <design:precision>22</design:precision>
+            <design:scale>31</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>time_spent_on_practice</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>time_spent_on_practice</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="StudentPerformance" id="13">
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">student_id</property>
+                    <property name="paramName">Student_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">category_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">2</property>
+                    <expression name="defaultValue" type="javascript">reportContext.getPersistentGlobalVariable("Current_category_id")</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">rptup_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">uid</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">course_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">batch_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">on_date</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">day_no</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">no_of_strands_completed</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">cumulative_no_of_strands_completed</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">target_no_of_strands</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">cumulative_target_no_of_strands_completed</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">category_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">category_caltime</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">no_of_questions_attempted</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">right_questions_attempted</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">time_spent_on_practice</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">rptup_id</property>
+                    <property name="nativeName">rptup_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">uid</property>
+                    <property name="nativeName">uid</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">course_id</property>
+                    <property name="nativeName">course_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">batch_id</property>
+                    <property name="nativeName">batch_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">on_date</property>
+                    <property name="nativeName">on_date</property>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">day_no</property>
+                    <property name="nativeName">day_no</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">no_of_strands_completed</property>
+                    <property name="nativeName">no_of_strands_completed</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">cumulative_no_of_strands_completed</property>
+                    <property name="nativeName">cumulative_no_of_strands_completed</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">target_no_of_strands</property>
+                    <property name="nativeName">target_no_of_strands</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">cumulative_target_no_of_strands_completed</property>
+                    <property name="nativeName">cumulative_target_no_of_strands_completed</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">category_id</property>
+                    <property name="nativeName">category_id</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">category_caltime</property>
+                    <property name="nativeName">category_caltime</property>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">no_of_questions_attempted</property>
+                    <property name="nativeName">no_of_questions_attempted</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">right_questions_attempted</property>
+                    <property name="nativeName">right_questions_attempted</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">time_spent_on_practice</property>
+                    <property name="nativeName">time_spent_on_practice</property>
+                    <property name="dataType">float</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select * 
+from rpt_user_performances 
+where uid=? and category_id=?]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>rptup_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>rptup_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>rptup_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>uid</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>uid</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>uid</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>course_id</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>course_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>course_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>batch_id</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>batch_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>batch_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>on_date</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>on_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>on_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>day_no</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>day_no</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>day_no</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>no_of_strands_completed</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>no_of_strands_completed</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>no_of_strands_completed</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>cumulative_no_of_strands_completed</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>cumulative_no_of_strands_completed</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>cumulative_no_of_strands_completed</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>target_no_of_strands</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>target_no_of_strands</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>target_no_of_strands</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>cumulative_target_no_of_strands_completed</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>cumulative_target_no_of_strands_completed</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>cumulative_target_no_of_strands_completed</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>category_id</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>category_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>category_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>category_caltime</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>8</design:nativeDataTypeCode>
+            <design:precision>22</design:precision>
+            <design:scale>31</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>category_caltime</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>category_caltime</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>no_of_questions_attempted</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>no_of_questions_attempted</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>no_of_questions_attempted</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>right_questions_attempted</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>right_questions_attempted</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>right_questions_attempted</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>time_spent_on_practice</design:name>
+              <design:position>15</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>8</design:nativeDataTypeCode>
+            <design:precision>22</design:precision>
+            <design:scale>31</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>time_spent_on_practice</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>time_spent_on_practice</design:label>
+            <design:formattingHints>
+              <design:displaySize>22</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="TotalStrandsInCategory" id="14">
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">category_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue" type="javascript">reportContext.getPersistentGlobalVariable("Current_category_id")</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">max(strand_sr_no_in_category)</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="onFetch"><![CDATA[Total_strands = row["max(strand_sr_no_in_category)"];
+
+reportContext.setPersistentGlobalVariable("Total_strands_in_category" , Total_strands.toString());]]></method>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">max(strand_sr_no_in_category)</property>
+                    <property name="nativeName">max(strand_sr_no_in_category)</property>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select max(strand_sr_no_in_category) 
+from mgc_personalized_course_info 
+where category_id=?]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>max(strand_sr_no_in_category)</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>max(strand_sr_no_in_category)</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>max(strand_sr_no_in_category)</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <themes>
+        <theme name="defaultTheme" id="4"/>
+    </themes>
+    <components>
+        <image name="NewImage" id="8">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <property name="marginRight">70pt</property>
+            <property name="display">block</property>
+            <property name="height">28px</property>
+            <property name="width">92px</property>
+            <property name="source">embed</property>
+            <property name="imageName">Logo_smaller.png</property>
+        </image>
+        <text-data name="ReportHeader" id="23">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">16pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="marginTop">-10pt</property>
+            <property name="marginLeft">20pt</property>
+            <property name="paddingBottom">3pt</property>
+            <property name="textAlign">center</property>
+            <expression name="valueExpr">"WEEKLY PERFORMANCE REPORT OF " + params["Student_name"].value</expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <image name="ImBelowHead" id="24">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <property name="marginTop">3pt</property>
+            <property name="marginBottom">0pt</property>
+            <property name="masterPage">Simple MasterPage</property>
+            <property name="pageBreakAfter">avoid</property>
+            <property name="pageBreakBefore">avoid</property>
+            <property name="pageBreakInside">avoid</property>
+            <property name="height">55px</property>
+            <property name="width">804px</property>
+            <property name="source">embed</property>
+            <property name="imageName">TEACHERS03 copy.jpg</property>
+        </image>
+        <text name="SummaryText" id="25">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <property name="marginTop">-15pt</property>
+            <property name="marginLeft">20pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="textAlign">justify</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<DIV style="line-height: 0.8cm;">
+<b>
+Dear Sir / Madam<br/>
+
+Greetings!</b><br/>
+
+This is a weekly progress report of <value-of>ProperCase(params["Student_name"].value)</value-of> 
+from <value-of>params["StartDate"].value</value-of> to <value-of>params["EndDate"].value</value-of>. 
+
+Currently, in Mathematics subject, <value-of>reportContext.getPageVariable("decideHeShe").toLowerCase()</value-of> is studying the chapter- <value-of>ProperCase(reportContext.getPersistentGlobalVariable("Current_category_name"))</value-of>. 
+
+In this chapter, <value-of>reportContext.getPageVariable("decideHeShe").toLowerCase()</value-of> will need to study and master <value-of>reportContext.getPersistentGlobalVariable("Total_strands_in_category")</value-of> different concepts.<br/>
+
+Right now, <value-of>ProperCase(params["Student_name"].value)</value-of> is <value-of>reportContext.getPageVariable("progressNote")</value-of>. By this week-end, he must have mastered 8 concepts while he has completed only 6. You are requested to kindly motivate Chirag to invest more time on practicing.
+
+</DIV>]]></text-property>
+        </text>
+        <text name="ProgressChartText" id="26">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <property name="marginLeft">20pt</property>
+            <property name="marginRight">20pt</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<B><U>Detailed day-on-day progress report of Chirag is as follows:</U></B>]]></text-property>
+        </text>
+        <image name="NewImage1" id="30">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <property name="marginRight">70pt</property>
+            <property name="display">block</property>
+            <property name="height">28px</property>
+            <property name="width">92px</property>
+            <property name="source">embed</property>
+            <property name="imageName">Logo_smaller.png</property>
+        </image>
+    </components>
+    <page-setup>
+        <simple-master-page name="NewSimpleMasterPage" id="3"/>
+        <simple-master-page name="FutorMasterPage" id="27">
+            <property name="type">a4</property>
+            <property name="topMargin">0.25in</property>
+            <property name="leftMargin">0.25in</property>
+            <property name="bottomMargin">0in</property>
+            <property name="backgroundImage">soft-white-backgrounds-wallpapers.jpg</property>
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <property name="borderBottomColor">#FFFFFF</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftColor">#FFFFFF</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightColor">#FFFFFF</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopColor">#FFFFFF</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="showHeaderOnFirst">true</property>
+            <property name="showFooterOnLast">true</property>
+            <property name="headerHeight">0.5in</property>
+            <page-header>
+                <image id="28">
+                    <property name="marginRight">70pt</property>
+                    <property name="display">block</property>
+                    <property name="height">28px</property>
+                    <property name="width">92px</property>
+                    <property name="source">embed</property>
+                    <property name="imageName">Logo_smaller.png</property>
+                </image>
+            </page-header>
+            <page-footer>
+                <text id="29">
+                    <property name="fontSize">7pt</property>
+                    <property name="fontWeight">normal</property>
+                    <property name="fontStyle">italic</property>
+                    <property name="textAlign">left</property>
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <list-property name="images">
+        <structure>
+            <property name="name">TEACHERS03 copy.jpg</property>
+            <property name="data">
+                /9j/4AAQSkZJRgABAgEBLAEsAAD/4QWZRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAAB
+                AAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAIAAAExAAIAAAAcAAAAcgEyAAIAAAAUAAAAjodpAAQAAAAB
+                AAAApAAAANAALcbAAAAnEAAtxsAAACcQQWRvYmUgUGhvdG9zaG9wIENTMyBXaW5kb3dzADIwMTI6MDY6
+                MTMgMjA6MDg6MTkAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAADyaADAAQAAAABAAAAkwAAAAAAAAAG
+                AQMAAwAAAAEABgAAARoABQAAAAEAAAEeARsABQAAAAEAAAEmASgAAwAAAAEAAgAAAgEABAAAAAEAAAEu
+                AgIABAAAAAEAAARjAAAAAAAAAEgAAAABAAAASAAAAAH/2P/gABBKRklGAAECAABIAEgAAP/tAAxBZG9i
+                ZV9DTQAB/+4ADkFkb2JlAGSAAAAAAf/bAIQADAgICAkIDAkJDBELCgsRFQ8MDA8VGBMTFRMTGBEMDAwM
+                DAwRDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAENCwsNDg0QDg4QFA4ODhQUDg4ODhQRDAwMDAwR
+                EQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM/8AAEQgAGACgAwEiAAIRAQMRAf/dAAQA
+                Cv/EAT8AAAEFAQEBAQEBAAAAAAAAAAMAAQIEBQYHCAkKCwEAAQUBAQEBAQEAAAAAAAAAAQACAwQFBgcI
+                CQoLEAABBAEDAgQCBQcGCAUDDDMBAAIRAwQhEjEFQVFhEyJxgTIGFJGhsUIjJBVSwWIzNHKC0UMHJZJT
+                8OHxY3M1FqKygyZEk1RkRcKjdDYX0lXiZfKzhMPTdePzRieUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm
+                9jdHV2d3h5ent8fX5/cRAAICAQIEBAMEBQYHBwYFNQEAAhEDITESBEFRYXEiEwUygZEUobFCI8FS0fAz
+                JGLhcoKSQ1MVY3M08SUGFqKygwcmNcLSRJNUoxdkRVU2dGXi8rOEw9N14/NGlKSFtJXE1OT0pbXF1eX1
+                VmZ2hpamtsbW5vYnN0dXZ3eHl6e3x//aAAwDAQACEQMRAD8Aqn6t/WIc9NyPkGn8j1B3Qeut+l07JH/W
+                z/BevOCaSFZ++T/dj+LF7Me5fHndM6m36WJc34sIUDiZbfpUPHxC9iLvHVDcys6Oa0+ZAR++T/dj+KvY
+                j3L5AMfI/wBG5Tbh5buKXH7v716w/DxH6OpYfOAgu6T093+AaPgEvvk/3Y/j/FXsR7l8xb03qDvo41h+
+                AH96I3o3V3fRwrT8h/5Jek/sjDH0WR8FNvTqmGGpffZ/ux/H/vlexHuXzcdA66eOn3H5N/8AJqQ+rvX/
+                APyuv+5v/k16UMcNE8+ScVx4ao/fZ/ux/H/vkexHuXzX/m/14c9Pv+5v/k1E9E6y3nBuHyH/AJJemGnt
+                zPdDdhh3Ov5Uvv0/3Y/87/vlfd49y+aHpnUm/SxbB8QP/JKJw8tv0qXD4x/evSj0uh30hKQ6PgDU1hxP
+                il9+yfux/wCd/wB8r7vHuXzM03DlhH3JCuw8MJ+S9Qb03AbxQzTyRG0YzdW1MHlAR+/5P3Y/87/vlfd4
+                9y+XNxcp30abD8GkorOm9Sf9HEvd8K3f3L1AEN1aB8BonBPil9/yfux/53/fK+7x7l8zb0PrbuOn5H+Z
+                H/VKY+r/AF7/AMr7vub/AOTXpYlTbyl9/wAn7sf+cj7tHuX/0PUyJTbCvlhJJT9Teml6S+WUklP1N6SX
+                pr5ZSSU/U3ppemvllJJT9Teml6S+WUklP1N6SXpL5ZSSU/U3ppemvllJJT9Teml6YXyykkp+pvSCXphf
+                LKSSn6n2JwIXyukkp//Z/+0PwlBob3Rvc2hvcCAzLjAAOEJJTQQEAAAAAAAHHAIAAAIAAAA4QklNBCUA
+                AAAAABDo8VzzL8EYoaJ7Z63FZNW6OEJJTQQvAAAAAABKuPkBAFgCAABYAgAAAAAAAAAAAABnGwAAYBMA
+                AAAAAAAAAAAAZxsAAGATAAAAAXsFAADgAwAAAQAPJwEAbGx1bgAAAAAAAAAAAAA4QklNA+0AAAAAABAB
+                LAAAAAEAAgEsAAAAAQACOEJJTQQmAAAAAAAOAAAAAAAAAAAAAD+AAAA4QklNBA0AAAAAAAQAAABaOEJJ
+                TQQZAAAAAAAEAAAAHjhCSU0D8wAAAAAACQAAAAAAAAAAAQA4QklNBAoAAAAAAAEAADhCSU0nEAAAAAAA
+                CgABAAAAAAAAAAI4QklNA/UAAAAAAEgAL2ZmAAEAbGZmAAYAAAAAAAEAL2ZmAAEAoZmaAAYAAAAAAAEA
+                MgAAAAEAWgAAAAYAAAAAAAEANQAAAAEALQAAAAYAAAAAAAE4QklNA/gAAAAAAHAAAP//////////////
+                //////////////8D6AAAAAD/////////////////////////////A+gAAAAA////////////////////
+                /////////wPoAAAAAP////////////////////////////8D6AAAOEJJTQQAAAAAAAACAIg4QklNBAIA
+                AAAAAnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4QklNBDAAAAAAATgBAQEBAQEBAQEBAQEBAQEBAQEB
+                AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
+                AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
+                AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
+                AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
+                AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQE4QklNBC0A
+                AAAAAAYAAQAAAGk4QklNBAgAAAAAABAAAAABAAACQAAAAkAAAAAAOEJJTQQeAAAAAAAEAAAAADhCSU0E
+                GgAAAAADSQAAAAYAAAAAAAAAAAAAAJMAAAPJAAAACgBUAEUAQQBDAEgARQBSAFMAMAAzAAAAAQAAAAAA
+                AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAPJAAAAkwAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA
+                AAAAAAAAABAAAAABAAAAAAAAbnVsbAAAAAIAAAAGYm91bmRzT2JqYwAAAAEAAAAAAABSY3QxAAAABAAA
+                AABUb3AgbG9uZwAAAAAAAAAATGVmdGxvbmcAAAAAAAAAAEJ0b21sb25nAAAAkwAAAABSZ2h0bG9uZwAA
+                A8kAAAAGc2xpY2VzVmxMcwAAAAFPYmpjAAAAAQAAAAAABXNsaWNlAAAAEgAAAAdzbGljZUlEbG9uZwAA
+                AAAAAAAHZ3JvdXBJRGxvbmcAAAAAAAAABm9yaWdpbmVudW0AAAAMRVNsaWNlT3JpZ2luAAAADWF1dG9H
+                ZW5lcmF0ZWQAAAAAVHlwZWVudW0AAAAKRVNsaWNlVHlwZQAAAABJbWcgAAAABmJvdW5kc09iamMAAAAB
+                AAAAAAAAUmN0MQAAAAQAAAAAVG9wIGxvbmcAAAAAAAAAAExlZnRsb25nAAAAAAAAAABCdG9tbG9uZwAA
+                AJMAAAAAUmdodGxvbmcAAAPJAAAAA3VybFRFWFQAAAABAAAAAAAAbnVsbFRFWFQAAAABAAAAAAAATXNn
+                ZVRFWFQAAAABAAAAAAAGYWx0VGFnVEVYVAAAAAEAAAAAAA5jZWxsVGV4dElzSFRNTGJvb2wBAAAACGNl
+                bGxUZXh0VEVYVAAAAAEAAAAAAAlob3J6QWxpZ25lbnVtAAAAD0VTbGljZUhvcnpBbGlnbgAAAAdkZWZh
+                dWx0AAAACXZlcnRBbGlnbmVudW0AAAAPRVNsaWNlVmVydEFsaWduAAAAB2RlZmF1bHQAAAALYmdDb2xv
+                clR5cGVlbnVtAAAAEUVTbGljZUJHQ29sb3JUeXBlAAAAAE5vbmUAAAAJdG9wT3V0c2V0bG9uZwAAAAAA
+                AAAKbGVmdE91dHNldGxvbmcAAAAAAAAADGJvdHRvbU91dHNldGxvbmcAAAAAAAAAC3JpZ2h0T3V0c2V0
+                bG9uZwAAAAAAOEJJTQQoAAAAAAAMAAAAAT/wAAAAAAAAOEJJTQQUAAAAAAAEAAAGUThCSU0EDAAAAAAE
+                fwAAAAEAAACgAAAAGAAAAeAAAC0AAAAEYwAYAAH/2P/gABBKRklGAAECAABIAEgAAP/tAAxBZG9iZV9D
+                TQAB/+4ADkFkb2JlAGSAAAAAAf/bAIQADAgICAkIDAkJDBELCgsRFQ8MDA8VGBMTFRMTGBEMDAwMDAwR
+                DAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAENCwsNDg0QDg4QFA4ODhQUDg4ODhQRDAwMDAwREQwM
+                DAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM/8AAEQgAGACgAwEiAAIRAQMRAf/dAAQACv/E
+                AT8AAAEFAQEBAQEBAAAAAAAAAAMAAQIEBQYHCAkKCwEAAQUBAQEBAQEAAAAAAAAAAQACAwQFBgcICQoL
+                EAABBAEDAgQCBQcGCAUDDDMBAAIRAwQhEjEFQVFhEyJxgTIGFJGhsUIjJBVSwWIzNHKC0UMHJZJT8OHx
+                Y3M1FqKygyZEk1RkRcKjdDYX0lXiZfKzhMPTdePzRieUpIW0lcTU5PSltcXV5fVWZnaGlqa2xtbm9jdH
+                V2d3h5ent8fX5/cRAAICAQIEBAMEBQYHBwYFNQEAAhEDITESBEFRYXEiEwUygZEUobFCI8FS0fAzJGLh
+                coKSQ1MVY3M08SUGFqKygwcmNcLSRJNUoxdkRVU2dGXi8rOEw9N14/NGlKSFtJXE1OT0pbXF1eX1VmZ2
+                hpamtsbW5vYnN0dXZ3eHl6e3x//aAAwDAQACEQMRAD8Aqn6t/WIc9NyPkGn8j1B3Qeut+l07JH/Wz/Be
+                vOCaSFZ++T/dj+LF7Me5fHndM6m36WJc34sIUDiZbfpUPHxC9iLvHVDcys6Oa0+ZAR++T/dj+KvYj3L5
+                AMfI/wBG5Tbh5buKXH7v716w/DxH6OpYfOAgu6T093+AaPgEvvk/3Y/j/FXsR7l8xb03qDvo41h+AH96
+                I3o3V3fRwrT8h/5Jek/sjDH0WR8FNvTqmGGpffZ/ux/H/vlexHuXzcdA66eOn3H5N/8AJqQ+rvX/APyu
+                v+5v/k16UMcNE8+ScVx4ao/fZ/ux/H/vkexHuXzX/m/14c9Pv+5v/k1E9E6y3nBuHyH/AJJemGntzPdD
+                dhh3Ov5Uvv0/3Y/87/vlfd49y+aHpnUm/SxbB8QP/JKJw8tv0qXD4x/evSj0uh30hKQ6PgDU1hxPil9+
+                yfux/wCd/wB8r7vHuXzM03DlhH3JCuw8MJ+S9Qb03AbxQzTyRG0YzdW1MHlAR+/5P3Y/87/vlfd49y+X
+                Nxcp30abD8GkorOm9Sf9HEvd8K3f3L1AEN1aB8BonBPil9/yfux/53/fK+7x7l8zb0PrbuOn5H+ZH/VK
+                Y+r/AF7/AMr7vub/AOTXpYlTbyl9/wAn7sf+cj7tHuX/0PUyJTbCvlhJJT9Teml6S+WUklP1N6SXpr5Z
+                SSU/U3ppemvllJJT9Teml6S+WUklP1N6SXpL5ZSSU/U3ppemvllJJT9Teml6YXyykkp+pvSCXphfLKSS
+                n6n2JwIXyukkp//ZADhCSU0EIQAAAAAAVQAAAAEBAAAADwBBAGQAbwBiAGUAIABQAGgAbwB0AG8AcwBo
+                AG8AcAAAABMAQQBkAG8AYgBlACAAUABoAG8AdABvAHMAaABvAHAAIABDAFMAMwAAAAEAOEJJTQ+gAAAA
+                AAEMbWFuaUlSRlIAAAEAOEJJTUFuRHMAAADgAAAAEAAAAAEAAAAAAABudWxsAAAAAwAAAABBRlN0bG9u
+                ZwAAAAAAAAAARnJJblZsTHMAAAABT2JqYwAAAAEAAAAAAABudWxsAAAAAgAAAABGcklEbG9uZxo0TqkA
+                AAAARnJHQWRvdWJAVoAAAAAAAAAAAABGU3RzVmxMcwAAAAFPYmpjAAAAAQAAAAAAAG51bGwAAAAEAAAA
+                AEZzSURsb25nAAAAAAAAAABBRnJtbG9uZwAAAAAAAAAARnNGclZsTHMAAAABbG9uZxo0TqkAAAAATENu
+                dGxvbmcAAAAAAAA4QklNUm9sbAAAAAgAAAAAAAAAADhCSU0PoQAAAAAAHG1mcmkAAAACAAAAEAAAAAEA
+                AAAAAAAAAQAAAAA4QklNBAYAAAAAAAcABAAAAAEBAP/hD9BodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8x
+                LjAvADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4
+                OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDQu
+                MS1jMDM2IDQ2LjI3NjcyMCwgTW9uIEZlYiAxOSAyMDA3IDIyOjQwOjA4ICAgICAgICAiPiA8cmRmOlJE
+                RiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8
+                cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2Vs
+                ZW1lbnRzLzEuMS8iIHhtbG5zOnhhcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6
+                eGFwTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8v
+                bnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp0aWZmPSJodHRwOi8v
+                bnMuYWRvYmUuY29tL3RpZmYvMS4wLyIgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlm
+                LzEuMC8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIg
+                ZGM6Zm9ybWF0PSJpbWFnZS9qcGVnIiB4YXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzMg
+                V2luZG93cyIgeGFwOkNyZWF0ZURhdGU9IjIwMTItMDYtMTNUMjA6MDg6MTkrMDU6MzAiIHhhcDpNb2Rp
+                ZnlEYXRlPSIyMDEyLTA2LTEzVDIwOjA4OjE5KzA1OjMwIiB4YXA6TWV0YWRhdGFEYXRlPSIyMDEyLTA2
+                LTEzVDIwOjA4OjE5KzA1OjMwIiB4YXBNTTpEb2N1bWVudElEPSJ1dWlkOjYyRkQ5NzNBNjVCNUUxMTE5
+                QjY0RUYyNDQ1QjQyREE4IiB4YXBNTTpJbnN0YW5jZUlEPSJ1dWlkOjIxRDM3MDZCNjVCNUUxMTE5QjY0
+                RUYyNDQ1QjQyREE4IiB0aWZmOk9yaWVudGF0aW9uPSIxIiB0aWZmOlhSZXNvbHV0aW9uPSIzMDAwMDAw
+                LzEwMDAwIiB0aWZmOllSZXNvbHV0aW9uPSIzMDAwMDAwLzEwMDAwIiB0aWZmOlJlc29sdXRpb25Vbml0
+                PSIyIiB0aWZmOk5hdGl2ZURpZ2VzdD0iMjU2LDI1NywyNTgsMjU5LDI2MiwyNzQsMjc3LDI4NCw1MzAs
+                NTMxLDI4MiwyODMsMjk2LDMwMSwzMTgsMzE5LDUyOSw1MzIsMzA2LDI3MCwyNzEsMjcyLDMwNSwzMTUs
+                MzM0MzI7MDI2OTU4NkMxMzZBQjdBRkVFNzhEMzM0ODc3NEI1MzIiIGV4aWY6UGl4ZWxYRGltZW5zaW9u
+                PSI5NjkiIGV4aWY6UGl4ZWxZRGltZW5zaW9uPSIxNDciIGV4aWY6Q29sb3JTcGFjZT0iMSIgZXhpZjpO
+                YXRpdmVEaWdlc3Q9IjM2ODY0LDQwOTYwLDQwOTYxLDM3MTIxLDM3MTIyLDQwOTYyLDQwOTYzLDM3NTEw
+                LDQwOTY0LDM2ODY3LDM2ODY4LDMzNDM0LDMzNDM3LDM0ODUwLDM0ODUyLDM0ODU1LDM0ODU2LDM3Mzc3
+                LDM3Mzc4LDM3Mzc5LDM3MzgwLDM3MzgxLDM3MzgyLDM3MzgzLDM3Mzg0LDM3Mzg1LDM3Mzg2LDM3Mzk2
+                LDQxNDgzLDQxNDg0LDQxNDg2LDQxNDg3LDQxNDg4LDQxNDkyLDQxNDkzLDQxNDk1LDQxNzI4LDQxNzI5
+                LDQxNzMwLDQxOTg1LDQxOTg2LDQxOTg3LDQxOTg4LDQxOTg5LDQxOTkwLDQxOTkxLDQxOTkyLDQxOTkz
+                LDQxOTk0LDQxOTk1LDQxOTk2LDQyMDE2LDAsMiw0LDUsNiw3LDgsOSwxMCwxMSwxMiwxMywxNCwxNSwx
+                NiwxNywxOCwyMCwyMiwyMywyNCwyNSwyNiwyNywyOCwzMDtBQ0NEOEYxRDI1N0YyOEU2NzBFNEJFMTc5
+                NEZGRDRFMiIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0Ig
+                SUVDNjE5NjYtMi4xIiBwaG90b3Nob3A6SGlzdG9yeT0iIj4gPHhhcE1NOkRlcml2ZWRGcm9tIHN0UmVm
+                Omluc3RhbmNlSUQ9InV1aWQ6Mzc2MDdCOEI2NEI1RTExMUJFRTFCQUI0OEI5NEE3QkQiIHN0UmVmOmRv
+                Y3VtZW50SUQ9InV1aWQ6MzY2MDdCOEI2NEI1RTExMUJFRTFCQUI0OEI5NEE3QkQiLz4gPC9yZGY6RGVz
+                Y3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+                ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/
+                Pv/iDFhJQ0NfUFJPRklMRQABAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BN
+                U0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAABAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQA
+                AAHwAAAAFGJrcHQAAAIEAAAAFHJYWVoAAAIYAAAAFGdYWVoAAAIsAAAAFGJYWVoAAAJAAAAAFGRtbmQA
+                AAJUAAAAcGRtZGQAAALEAAAAiHZ1ZWQAAANMAAAAhnZpZXcAAAPUAAAAJGx1bWkAAAP4AAAAFG1lYXMA
+                AAQMAAAAJHRlY2gAAAQwAAAADHJUUkMAAAQ8AAAIDGdUUkMAAAQ8AAAIDGJUUkMAAAQ8AAAIDHRleHQA
+                AAAAQ29weXJpZ2h0IChjKSAxOTk4IEhld2xldHQtUGFja2FyZCBDb21wYW55AABkZXNjAAAAAAAAABJz
+                UkdCIElFQzYxOTY2LTIuMQAAAAAAAAAAAAAAEnNSR0IgSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYWVogAAAAAAAA81EAAQAAAAEWzFhZWiAA
+                AAAAAAAAAAAAAAAAAAAAWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZWiAA
+                AAAAAAAkoAAAD4QAALbPZGVzYwAAAAAAAAAWSUVDIGh0dHA6Ly93d3cuaWVjLmNoAAAAAAAAAAAAAAAW
+                SUVDIGh0dHA6Ly93d3cuaWVjLmNoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                AAAAAAAAAGRlc2MAAAAAAAAALklFQyA2MTk2Ni0yLjEgRGVmYXVsdCBSR0IgY29sb3VyIHNwYWNlIC0g
+                c1JHQgAAAAAAAAAAAAAALklFQyA2MTk2Ni0yLjEgRGVmYXVsdCBSR0IgY29sb3VyIHNwYWNlIC0gc1JH
+                QgAAAAAAAAAAAAAAAAAAAAAAAAAAAABkZXNjAAAAAAAAACxSZWZlcmVuY2UgVmlld2luZyBDb25kaXRp
+                b24gaW4gSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAsUmVmZXJlbmNlIFZpZXdpbmcgQ29uZGl0aW9uIGlu
+                IElFQzYxOTY2LTIuMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdmlldwAAAAAAE6T+ABRfLgAQzxQA
+                A+3MAAQTCwADXJ4AAAABWFlaIAAAAAAATAlWAFAAAABXH+dtZWFzAAAAAAAAAAEAAAAAAAAAAAAAAAAA
+                AAAAAAACjwAAAAJzaWcgAAAAAENSVCBjdXJ2AAAAAAAABAAAAAAFAAoADwAUABkAHgAjACgALQAyADcA
+                OwBAAEUASgBPAFQAWQBeAGMAaABtAHIAdwB8AIEAhgCLAJAAlQCaAJ8ApACpAK4AsgC3ALwAwQDGAMsA
+                0ADVANsA4ADlAOsA8AD2APsBAQEHAQ0BEwEZAR8BJQErATIBOAE+AUUBTAFSAVkBYAFnAW4BdQF8AYMB
+                iwGSAZoBoQGpAbEBuQHBAckB0QHZAeEB6QHyAfoCAwIMAhQCHQImAi8COAJBAksCVAJdAmcCcQJ6AoQC
+                jgKYAqICrAK2AsECywLVAuAC6wL1AwADCwMWAyEDLQM4A0MDTwNaA2YDcgN+A4oDlgOiA64DugPHA9MD
+                4APsA/kEBgQTBCAELQQ7BEgEVQRjBHEEfgSMBJoEqAS2BMQE0wThBPAE/gUNBRwFKwU6BUkFWAVnBXcF
+                hgWWBaYFtQXFBdUF5QX2BgYGFgYnBjcGSAZZBmoGewaMBp0GrwbABtEG4wb1BwcHGQcrBz0HTwdhB3QH
+                hgeZB6wHvwfSB+UH+AgLCB8IMghGCFoIbgiCCJYIqgi+CNII5wj7CRAJJQk6CU8JZAl5CY8JpAm6Cc8J
+                5Qn7ChEKJwo9ClQKagqBCpgKrgrFCtwK8wsLCyILOQtRC2kLgAuYC7ALyAvhC/kMEgwqDEMMXAx1DI4M
+                pwzADNkM8w0NDSYNQA1aDXQNjg2pDcMN3g34DhMOLg5JDmQOfw6bDrYO0g7uDwkPJQ9BD14Peg+WD7MP
+                zw/sEAkQJhBDEGEQfhCbELkQ1xD1ERMRMRFPEW0RjBGqEckR6BIHEiYSRRJkEoQSoxLDEuMTAxMjE0MT
+                YxODE6QTxRPlFAYUJxRJFGoUixStFM4U8BUSFTQVVhV4FZsVvRXgFgMWJhZJFmwWjxayFtYW+hcdF0EX
+                ZReJF64X0hf3GBsYQBhlGIoYrxjVGPoZIBlFGWsZkRm3Gd0aBBoqGlEadxqeGsUa7BsUGzsbYxuKG7Ib
+                2hwCHCocUhx7HKMczBz1HR4dRx1wHZkdwx3sHhYeQB5qHpQevh7pHxMfPh9pH5Qfvx/qIBUgQSBsIJgg
+                xCDwIRwhSCF1IaEhziH7IiciVSKCIq8i3SMKIzgjZiOUI8Ij8CQfJE0kfCSrJNolCSU4JWgllyXHJfcm
+                JyZXJocmtyboJxgnSSd6J6sn3CgNKD8ocSiiKNQpBik4KWspnSnQKgIqNSpoKpsqzysCKzYraSudK9Es
+                BSw5LG4soizXLQwtQS12Last4S4WLkwugi63Lu4vJC9aL5Evxy/+MDUwbDCkMNsxEjFKMYIxujHyMioy
+                YzKbMtQzDTNGM38zuDPxNCs0ZTSeNNg1EzVNNYc1wjX9Njc2cjauNuk3JDdgN5w31zgUOFA4jDjIOQU5
+                Qjl/Obw5+To2OnQ6sjrvOy07azuqO+g8JzxlPKQ84z0iPWE9oT3gPiA+YD6gPuA/IT9hP6I/4kAjQGRA
+                pkDnQSlBakGsQe5CMEJyQrVC90M6Q31DwEQDREdEikTORRJFVUWaRd5GIkZnRqtG8Ec1R3tHwEgFSEtI
+                kUjXSR1JY0mpSfBKN0p9SsRLDEtTS5pL4kwqTHJMuk0CTUpNk03cTiVObk63TwBPSU+TT91QJ1BxULtR
+                BlFQUZtR5lIxUnxSx1MTU19TqlP2VEJUj1TbVShVdVXCVg9WXFapVvdXRFeSV+BYL1h9WMtZGllpWbha
+                B1pWWqZa9VtFW5Vb5Vw1XIZc1l0nXXhdyV4aXmxevV8PX2Ffs2AFYFdgqmD8YU9homH1YklinGLwY0Nj
+                l2PrZEBklGTpZT1lkmXnZj1mkmboZz1nk2fpaD9olmjsaUNpmmnxakhqn2r3a09rp2v/bFdsr20IbWBt
+                uW4SbmtuxG8eb3hv0XArcIZw4HE6cZVx8HJLcqZzAXNdc7h0FHRwdMx1KHWFdeF2Pnabdvh3VnezeBF4
+                bnjMeSp5iXnnekZ6pXsEe2N7wnwhfIF84X1BfaF+AX5ifsJ/I3+Ef+WAR4CogQqBa4HNgjCCkoL0g1eD
+                uoQdhICE44VHhauGDoZyhteHO4efiASIaYjOiTOJmYn+imSKyoswi5aL/IxjjMqNMY2Yjf+OZo7OjzaP
+                npAGkG6Q1pE/kaiSEZJ6kuOTTZO2lCCUipT0lV+VyZY0lp+XCpd1l+CYTJi4mSSZkJn8mmia1ZtCm6+c
+                HJyJnPedZJ3SnkCerp8dn4uf+qBpoNihR6G2oiailqMGo3aj5qRWpMelOKWpphqmi6b9p26n4KhSqMSp
+                N6mpqhyqj6sCq3Wr6axcrNCtRK24ri2uoa8Wr4uwALB1sOqxYLHWskuywrM4s660JbSctRO1irYBtnm2
+                8Ldot+C4WbjRuUq5wro7urW7LrunvCG8m70VvY++Cr6Evv+/er/1wHDA7MFnwePCX8Lbw1jD1MRRxM7F
+                S8XIxkbGw8dBx7/IPci8yTrJuco4yrfLNsu2zDXMtc01zbXONs62zzfPuNA50LrRPNG+0j/SwdNE08bU
+                SdTL1U7V0dZV1tjXXNfg2GTY6Nls2fHadtr724DcBdyK3RDdlt4c3qLfKd+v4DbgveFE4cziU+Lb42Pj
+                6+Rz5PzlhOYN5pbnH+ep6DLovOlG6dDqW+rl63Dr++yG7RHtnO4o7rTvQO/M8Fjw5fFy8f/yjPMZ86f0
+                NPTC9VD13vZt9vv3ivgZ+Kj5OPnH+lf65/t3/Af8mP0p/br+S/7c/23////uAA5BZG9iZQBkAAAAAAH/
+                2wCEAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgsKCgwQDAwMDAwMEAwMDAwMDAwMDAwMDAwMDAwMDAwM
+                DAwMDAwMDAwBBwcHDQwNGBAQGBQODg4UFA4ODg4UEQwMDAwMEREMDAwMDAwRDAwMDAwMDAwMDAwMDAwM
+                DAwMDAwMDAwMDAwMDP/AABEIAJMDyQMBEQACEQEDEQH/3QAEAHr/xAGiAAAABwEBAQEBAAAAAAAAAAAE
+                BQMCBgEABwgJCgsBAAICAwEBAQEBAAAAAAAAAAEAAgMEBQYHCAkKCxAAAgEDAwIEAgYHAwQCBgJzAQID
+                EQQABSESMUFRBhNhInGBFDKRoQcVsUIjwVLR4TMWYvAkcoLxJUM0U5KismNzwjVEJ5OjszYXVGR0w9Li
+                CCaDCQoYGYSURUaktFbTVSga8uPzxNTk9GV1hZWltcXV5fVmdoaWprbG1ub2N0dXZ3eHl6e3x9fn9zhI
+                WGh4iJiouMjY6PgpOUlZaXmJmam5ydnp+So6SlpqeoqaqrrK2ur6EQACAgECAwUFBAUGBAgDA20BAAIR
+                AwQhEjFBBVETYSIGcYGRMqGx8BTB0eEjQhVSYnLxMyQ0Q4IWklMlomOywgdz0jXiRIMXVJMICQoYGSY2
+                RRonZHRVN/Kjs8MoKdPj84SUpLTE1OT0ZXWFlaW1xdXl9UZWZnaGlqa2xtbm9kdXZ3eHl6e3x9fn9zhI
+                WGh4iJiouMjY6Pg5SVlpeYmZqbnJ2en5KjpKWmp6ipqqusra6vr/2gAMAwEAAhEDEQA/AIRnVOodirsV
+                dirYxVvFDsVdikOxV2KuxV2FW8CHYq7CrsVdirsVbxV2KuxV2KuxVsYVbwK7FXYVdhVwxVvFXYq7FDsV
+                bGKuwq7FXYq7FV2KuxV2Kuwq4YEN4Vdil2KuGKG8VdirsVdhVdgV2FXYq7FW8VdirsVdhCt4Fdih2FXY
+                q3ireKuwlXYFbGFXYq7FXYq2MUOxV2FLsVbGKC3ih2KuxV2Kt4q7FXYVdhVsYFdirsKuxUtjFW8Vdih2
+                KuxV2FXYq3irsVdirhireKuxV2FXYq7FXYq7FDYxS3irsVdirhireKHYq7FXYVdirsVdirsVbGKuxV2K
+                v//QhGdU6h2KuxV2KtjFW8UOxV2KQ7FXYq7FXYVbwIdirsKuxV2KuxVvFXYq7FXYq7FWxhVvArsVdhV2
+                FXDFW8VdirsUOxVsYq7CrsVdirsVXYq7FXYq7CrhgQ3hV2KXYq4YobxV2KuxV2FV2BXYVdirsVbxV2Ku
+                xV2EK3gV2KHYVdireKt4q7CVdgVsYVdirsVdirYxQ7FXYUuxVsYoLeKHYq7FXYq3irsVdhV2FWxgV2Ku
+                wq7FS2MVbxV2KHYq7FXYVdireKuxV2KuGKt4q7FXYVdirsVdirsUNjFLeKuxV2KuGKt4odirsVdhV2Ku
+                xV2KuxVsYq7FXYq//9GEZ1TqHYq7FXYq2MVbxQ7FXYpDsVdirsVdhVvAh2Kuwq7FXYq7FW8VdirsVdir
+                sVbGFW8CuxV2FXYVcMVbxV2KuxQ7FWxirsKuxV2KuxVdirsVdirsKuGBDeFXYpdirhihvFXYq7FXYVXY
+                FdhV2KuxVvFXYq7FXYQreBXYodhV2Kt4q3irsJV2BWxhV2KuxV2KtjFDsVdhS7FWxigt4odirsVdireK
+                uxV2FXYVbGBXYq7CrsVLYxVvFXYodirsVdhV2Kt4q7FXYq4Yq3irsVdhV2KuxV2KuxQ2MUt4q7FXYq4Y
+                q3ih2KuxV2FXYq7FXYq7FWxirsVdir//0oRnVOodirsVdirYxVvFDsVdikOxV2KuxV2FW8CHYq7CrsVd
+                irsVbxV2KuxV2KuxVsYVbwK7FXYVdhVwxVvFXYq7FDsVbGKuwq7FXYq7FV2KuxV2Kuwq4YEN4Vdil2Ku
+                GKG8VdirsVdhVdgV2FXYq7FW8VdirsVdhCt4Fdih2FXYq3ireKuwlXYFbGFXYq7FXYq2MUOxV2FLsVbG
+                KC3ih2KuxV2Kt4q7FXYVdhVsYFdirsKuxUtjFW8Vdih2KuxV2FXYq3irsVdirhireKuxV2FXYq7FXYq7
+                FDYxS3irsVdirhireKHYq7FXYVdirsVdirsVbGKuxV2Kv//ThGdU6h2KuxV2KtjFW8UOxV2KQ7FXYq7F
+                XYVbwIdirsKuxV2KuxVvFXYq7FXYq7FWxhVvArsVdhV2FXDFW8VdirsUOxVsYq7CrsVdirsVXYq7FXYq
+                7CrhgQ3hV2KXYq4YobxV2KuxV2FV2BXYVdirsVbxV2KuxV2EK3gV2KHYVdireKt4q7CVdgVsYVdirsVd
+                irYxQ7FXYUuxVsYoLeKHYq7FXYq3irsVdhV2FWxgV2Kuwq7FS2MVbxV2KHYq7FXYVdireKuxV2KuGKt4
+                q7FXYVdirsVdirsUNjFLeKuxV2KuGKt4odirsVdhV2KuxV2KuxVsYq7FXYq//9T1A0QO/JvvxVTa2U9W
+                bFVJrGE9S334qovpUDfzf8FiqjLoVqw6N/wTYqh38tWbDfn/AMG39cVQz+UbJu8n/Bt/XFULL5Jszvyl
+                H+zb+uKoWTyHan/dsw/56N/XFUJJ5AiLUE01P9d/64qh5Py860uJh/z0f+uKoSX8vpx9m6m6f78f+uKq
+                D+Qr4Ha6m/5GP/XFVCTyNqSg0uZv+Rj/ANcVQ8nk3VV/4+Jv+Rj/ANcVUW8pauGp68x/56P/AFxVSk8s
+                asoP76b/AJGP/XFVF/LuqgbzTf8AIx/64qsbQNUH+7pv+Rj/ANcVUW0PVP8Af83/ACMf+uKqTaPqg/3f
+                N/yMf+uKqL6TqY/3fN/yMf8Ariqi2nap/wAtE3/Ix/64qsNlqg2+sT/8jH/riqmbbVK0+sT/APIx/wCu
+                KuMOpj/j4m/5GP8A1xVwj1LvcTf8jH/rirQGog/70Tf8jH/riq8/Xx/x8Tf8jH/rirueoD/j5m/5GP8A
+                1xVeJL//AJaJv+Rj/wBcVXCW/wD+Wib/AJGP/XFVWOS9I3uJv+Rj/wBcVVVe87zy/wDIx/64qqB7v/lo
+                l/5GP/XFVVXu6/38v/Ix/wCuKr1ku6/38tP9dv64qrKbv/f8v/Ixv64qqq12DtPL/wAG39cVVUN3/v8A
+                l/4Nv64qrKbr/f8AL/wbf1xVEQi5YVM0n/Bt/XFVVPrPKnrSdafbb+uKogC57SyV/wBZv64qrxC5I3kk
+                /wCCb+uKqqi46eo9P9Zv64qrBbgCokev+s2Kq0YuCN5H/wCCb+uKq6ian23r/rNiq5DcU+233nFURGZi
+                N3b7ziqoDPU/G33n+uKtq09N3bt3OKq0ZlI3ZvvOKt85+VOTU+nFVyNKSQWb7z/XFVQep/M33nFV4Lj9
+                o/ecVXAv/MfvOKuLSD9o/fiq0mT+Y/ecVU5GkC7Ma/M4qtDSlalm+84qtLzcqcmp9OKrXaUCodvvOKrV
+                aVhu7fQxxVTZpqkc2+84qol7ih+Nqj3OKqLvc/78b7ziqkzXPKnqP/wR/rirTJMD/eOf9kcVUXWep/eP
+                /wAEcVUHE9P71/8Ag2/riqHk+sgbSyV/1m/riqi31o9ZZP8Agm/riqi4uevrSf8ABtiqHY3f+/pP+Db+
+                uKqTG7/39J/wbf1xVRY3VaetJ/wbf1xVZL9aAqJpf+Db+uKqJN0R/fy/8G39cVUWe7r/AH8v/Bt/XFVO
+                Rrsf7vl/5GP/AFxVSL3f+/5f+Df+uKqLSXnKn1iX/kY/9cVWGS8/5aJf+Rj/ANcVUnkvf+WiX/kY/wDX
+                FVhkvq/70Tf8jH/riq1n1D/lom/5GP8A1xVTZtQ/5aJv+Rj/ANcVa/3I1p9Ym/5GP/XFXcNS7XE3/Ix/
+                64q0YtTP/HxN/wAjH/riq4W2pn/j4n/5GP8A1xVcLPVP+Wif/kY/9cVXLYamf93zf8jH/riqqumamR/f
+                zf8AIx/64qqppOqH/d83/Ix/64qrJouqH/d83/Ix/wCuKqi6JqpNPWm/4N/64qrL5f1Q/wC7pv8Ag3/r
+                iqqnlvVm/wB3Tf8AIx/64qqL5X1cmnrzf8jH/riqIHk/Vqf70TD/AJ6P/XFVQeS9UNP9Jm/4N/64qiE8
+                i6iTvdTf8jH/AK4qrJ5BvD1upv8AkY/9cVRUH5eyNu11NX/jI/8AXFUXH+XqU3uJz/z0f+uKomPyDbjr
+                NMfnI/8AXFUTH5GtB1kl/wCRj/1xVEx+TrNT9qQ/N2xVFR+VbJe8n/BtiqKTy9aL05/8EcVV00a2Xpy/
+                4I4qrpp0A6cvvxVWS0iA2r9+Kr1gUHYt95xVUCe5+/FVwxVcBirdMVf/1fUhxVrFWj1xVrbFWtsVd8Nc
+                VW8cVaCAVJxVxQHcYq0Yh4Yq16S+GKrWgU9sVaNulNxiqmbeE9hiq02URGyjFVE2EJalBXpTFVF9IQrT
+                iK4qpjR4gtGXeuKoeTQULluI474qoL5fjNdh0+eKrH8uR/yePbFUK/llC/QDfpiqhL5XUjZcVQ0nlZR1
+                AGKqLeVR/Lt8sVUH8rqa0WuKqL+ViP2cVUX8rmh+HFUP/hsjqBQYqtPl4joMVUm0Bh2xVTOhtTYb4q5d
+                Ecfs1/HFVv6IYNuMVXjTj2H4YqvWwbfYn6MVaFk9aUxVUSzdeopiqoLY/LFVZbZxvTFVaOEqakUBxVXW
+                LluBX6MVVkUdDiqqEDLReoxVUSBqDv174qiUQUp3xVVjjYA7YqrLGdvHFVdVHTFVVE7nFV44ilTTFV4C
+                nauKr6ACp2xVvjyoRuN64q36b869sVXyIWWi9a1p0xVSMTAAE02PfFUQqdMVXSJ8PWm+KuVPh33xVox7
+                k9u+KrKKSaGpxV2w+0aYq0U712xVqgr1xVSlVa7HqNsVW/BsK7/TiqxyvjiqiwWuKqJQ8q9sVWTR7dKY
+                qogKoo3XqMVWMoIxVQnQEbCm+KocwsdwMVU2jHTviqgYmNcVUngfpTFVjQilO/TFVJrdhuRQYqpGAYqo
+                myctWnXpiqwWDg1IoMVabTnbcDFXHSnPbFWho7+GKrv0G56A4quGgP8Ay4qvHl8ntiqonltj0Wvviq9f
+                LRJpTfFVVfKr0+xviqIi8qkD4kxVUTymeXLhtiqvD5VHgDiqLi8rL/LiqtH5YTkNh1xVEr5aQD7IxVWX
+                y/EtKgDFUSmhRDsKYqrJo8HYCoxVVXSYh2GKqw02ELTiPnirUdjCu5pSn+fbFVdbaAf7WKt+hF2G+Kt+
+                ihFANxiq+OBadK++KtiJa1piqoAldsVXBV/zGKreIr0xVcFp1xVsDFV1MVcNsVbxVsYq3irYxVeBireK
+                v//W9SnFVvfFWsVaxVo7jFWqYq7uMVbOKtUp3xV1cVapireKrS29KYqprQ1pXFV60AxVaYxzJr3xVdTr
+                irRQHviqmWFeNPauKtemqCvXtiq5FDL0pviq36uvKv09MVc8KgVpXFUPJbxtSoPQ+GKu+rIduPtX6MVW
+                CwjBPftirTadG3bFVj6XH4dsVQjaTGAdq/Riqk+lIP2a4qpNpCFunXFVv6DWp2riq39CLSlMVQz6MvIj
+                j3OKqX6HUV+HFWhpVP2euKrP0OK1p3xVttKrtSmKqT6ZxNKfdiq4WJApx9sVcbAgbjFVyWnEdK+GKtiz
+                +Pvviq9LTjiqulsaVpiq8W3xdcVVlhpviqoIicVVFixVf0HjirTU2JB6dMVVgnxA74qqOnJae+KtqgVa
+                dd8VVAu2KtEcBy69qYq1xEm/Ttiq9WAbjToaVxVVZeW1cVcIwBStcVWFhUihxVRUBakV6dDirZXmK9KY
+                q3x3pirRjpXfriqlKlSK9QMVUmXfFVjCo6Htiqz0qjvtirZh3riqnNGaV98VQzx1HTFVrR4qseFnFKfT
+                iq1bYgf2YqptZ9T9OKqS2tDWlcVb+pEmtMVWfUPi6HrirbaeWH2ad8VaGlVA2OKqi6SCQKYqqfoUU6Yq
+                vTRBTpiqoNGHTjiqouhr4YqqrooH7OKrxpKVI49MVXR6TGQdj0HhiqKi0lABtt7jFVy6RHz5e+Kq66bG
+                O1MVX/o+PbFXfV0rw4+1cVXraJGtacu2KqscKla0pv0xVcLZK1xVcYlUVpiqnIimhoRsfDFV4A6U9q7Y
+                q2sQFe/bpiq/gDirfEUO/XFVHgAD1xV2wHfFWwAT88VXqnUVxVUUUFMVU6ip+ZxVy7b4qvDU7Yq4DfFV
+                x3xVx64q3XFW8VdirYxVsYquGKrhireKv//X9THFVpxVrFWsVW+OKtHFW8Vdiq1icVdU1xV24rirqnFW
+                qCnTFWuIAqBirYxVrFW8VaxVRP2+nfririxIod++KqsQ+E9t8VdU1p2xVqQnjt4+FcVUyTQVHj2xV37X
+                9ntiq6MknfwxVU40xVY1dxT8MVU0QM1GG1PlirnhTlSmKu9BAnKm9MVUipofHbtirYQlf7MVUmgBY1Hf
+                FVMWyEEEDFVy2UZBqO+KqRtBypQUB228MVWtamlafhiq02QIqwBxVabIcum2KrpLBABt3xVRazA6KBir
+                vqm/T8PbFXR2hOxG1NsVVBaU7Yq42x8PwxVaIXofo7YqvWEkYquERqdsVXLDXqPwxVv0B/Liq4R79MVX
+                cD3xVeqbYq3xxVZKPh8d8VWAkdNsVXKDzG3frTFVdtht1xV1TTFVFq8zQd/DFVlDQ7fhirqsBt+rFVUL
+                UA+2KtMGptiqk4ao27eGKu9FeFab0xVYIFJp7YqteLiaLttiqzi3L2+WKtSREjFVMwe2Kt/VQT0xVdJa
+                BQOI3rTxxVaLZqdOuKu+rMSRTbvirf1JaGgH0DFVWKxUjpirX1Fan4Rirls9j8OKr/qdBsvj2xVXWxTY
+                8d8VVPqgAO2KuNvTYDt4YquEA5dPwxVU9Gm9MVXCIbf0xVd6EdalRirhCigkKMVXBNumKt8RXFV3EDFX
+                YqoGgc/PFW+RIIO+KqsQ+E7U38MVdU1p2xVqRjx28fniqmSaDbxxV1Ty/sxVfGzE0Phiq/fFWqt/mMVW
+                J8Ro3SnyxVtlWvTtirYRePLvTFWubD57YquVmI64q136Yq5euKr1AOKuqQcVbqcVbHvirsVXYq7FV2Ku
+                GKrxiq4Yq3ir/9D1ORiqw4qtOKtYq7FWmrirqHFWiaig64q0dsVbqKUrirQ26nFXFl7nFVlCXrXavjiq
+                49OuKtEE7jFXc16V3xVr1E8emKrWceO1MVXj7I+WKrJfs9ab4qpdhvvviqqJFAAJ3p74q07qwop379sV
+                cA1BT9eKqnbFVJwePh0xVaDQCp/HFWzUnr+OKtICa719q4qv4NTp+OKrOJ54q2cVWstR/bire3jviq4s
+                p6fTirVAd6VxVT4fF9OKuZKig64qvij2NRvXFVMoKn5nbFXCLhuwoPHFW+APQbYquMY4070xVRS3YVr+
+                vFV/pBRQkA74qsMB5cjSlfH2xVyIu++KtmOu4+WKt8Fr1ocVWugZaKRXYnFXJFRfpOKruA8cVaCFaluh
+                2xVvknj16Yq0eP8AnXFXRgEmlCQOmKrqb4qpcfj6+O1cVbSimp6U98VX818cVWhTy69dxiq5UbcnFXMh
+                64qolf3n04q3xFDTvirTIadade+KrhC1Rt+PtirTQHj0+/FXCKgxVr0t8VaWHjudsVXqigb4q36a/T8s
+                VaaHbw/DFXLEAOuKtrCeQPauKqskYoNj164qs9Et0FaYqvCj7Nd+lMVVEQVxVqWJmIK9KeNMVXCIg17D
+                3xVxXkKAiuKtU4gAmh374qq1WlK7kYq0KKKk0HjirfNB+0MVUwp9SoO1a9cVVO3XFWmUmlMVbMiD4a79
+                D9GKteqnY/rxVaXHjtTFVQfZHyxVZL9nrTfFVLsN998VVRIoABO9PfFWndWFFO/ftirgGoKfrxVU7Yqp
+                ODx8OmKrQaKN/wAcVb6nr+OKuQE96/Tiq/gadMVW8SGxVd1xVqh23xVcD74qu5A9MVbxVrFW8VXLWmKt
+                4q2MVdiq7FXDFV4xVcMVbxV//9H1QcVWHFVpxVbirq4q7FXHFVg3P0Yq5lr3xV3fFXEVxVTcAU+WKr6e
+                +KuIxVqtNsVU2Xcn54qsHfrirfEMo3PfFVTnuFp7VxV0i/D9OKqfCtMVapvWuKuoFqfoxVUjoVr+vFV+
+                KqctOO/jiq0R8h16Yq1Xen0YquiUBj16YqqkUxVRJ+M9euKr/TrtXFWinauKqZpyPXvirhT9WKrlxVvj
+                vWuKrvToeuKurxJHXviqkQOX04q3IxZdxTFXKQF6YqqhdgfEYq2EpiqlKACNu2Kr/TqvXqMVU/QCjrWu
+                2Kr0j2xVow7lq++Kqccda0J6YqqrEadcVd6RrWuKrXTktOnfFVJoiKDFW/T+LFVyxcCTWvamKrxGWFem
+                9MVUmh+I798VaMBHfrirvRNOuKrlT4wD1riqp6OKtmI0xVQMR5n5nFWzAUHWvbFWvTr9GKqyxHiPlirU
+                ifD9OKrViLDY0xVv0D1riq1oqL18MVWmMDFWwm+Kr+FdumKtiGvfFV3pkLWoxVbIajce+KujbiNh1xVb
+                Qc6++KqiEMTiqoFxVx+yfliqnEQSfl3xVt4+R69Birv2vp/Viq5lqKe+KqUgC0B32OKqgUVrXwxVcV26
+                4q0DxoOuKqbKORbfviqwUoeuKruIZepHamKqgah409q4q6Rfh+nFVPhWmKtU3rXFXUC1P0YqqR0K1/Xi
+                q/FVOWnHfxxVaI+Q69MVaB3p9GKr4lAOKqmKqe3I/PFV/DtXFXBad8VW0FcVbFMVXDFWwMVXAYq30xVo
+                dcVXHFXDFV2KtjFVwxVeMVdir//S9UnFVhGKrCMVW4q7virsVcemKrOg2xVtSSMVdtXFXN7Yqpt7jFWw
+                TX2xVuQkLt44qtUkjfFVhrU4qs332/DFW+TAbfTtiq4E8ht360xVuUnjt44qsBOKtVNcVaqaGv6sVbDO
+                Btt9GKrub19sVa5Mev0Yq4llIpirVO9MVcjNvTbFVaMlhUneuKqJPxn54qvUsTucVcxau3hiq2gJ98Vb
+                ZVHT9eKtDpiqpxFKg7/PFWlLE7nFVxUHc7+GKrfTTr3+eKt+mnfpiq11AoANvvxVVX7I+WKuxVTlG42r
+                tirQZ/U4/s1p09sVVCPEYq5Rt4b4qtPLfwxVYtQCQKHbtiqpGSV361xVZzfnTtXwxVt+mKqbA7bdvDFX
+                b8un4Yq2GY1r7dsVVI68fDftiqkS3Mj3xVzcqfqxVqpp/ZirdTyrT8MVXCSQg1P4Yq7m9P7MVa9++KtV
+                Zuu+KuJIG2Krw71A7Yq3NstffFViswG2KqhJ41xVYakb9MVcEUjf6MVW03p4YqvUDlvirbVU0U7ffirY
+                Pw7nFXempoCMVaEaV9vnirfppStN8VaiHxdO3hTFVTpirRGxxVRqVUkbHbFVSMsy1PWpxVum/TFW22G2
+                Kqb70qK9e2KtgtyA7fLFV0pKrUda/PFVqklanrXFVprXFVgrQ7fhiq4FgNvuxVcCeQ2HXwxVuUnjt44q
+                sBOKtVNcVaqaGv6sVbDOBtt9GKrub19sVa5Mev0Yq4ll2BpirgO/fFXKzduuKqsZJFT1riqw15H54qvV
+                mrucVcScVcAK/rxVviBirYxVdQUxVwJ74q3TFW6DFXYq7FV2KtjFVwxVeMVdir//0/VJxVacVWnFVhxV
+                o4q0Dtire2KuxVawJO2Ku2pirR3GKuXpiq09euKtcGofo74q4KaUOKruO2KqYRt/64qtZSOu304q3wbr
+                28cVa2xV3Bm6dMVb470xVplYDfbFWqHxxVdttvirjQjbFWwppirtsVapyFBufDFWmU9DscVX8l40rvTF
+                VPiaYq7iaYqqBloBirakE7Yqu+jFWjTjTFVJBxO+KtsATsdvuxVUA+EfLFXEYqtYb9cVWAfvK1xVVBU9
+                MVcdu+KtmpX6MVU0UqSW6Upiq+uKrP2+v0Yqubp1piq3iWG2/XFWuLc69vniq5RvirUiMaEeGKuKN9Hz
+                xVYEJ6b4q3xI2PXFXUxVsIy7nau2Ku4k9N8VW8TXFWwKVqcVbBHjirQWp64qu4kGp6Yq4kA4q1wbrTbF
+                Wo6KxJO1MVbehNR0xVbx3xVclFNTiq/kPHFW+1cVbNK7/qxVTlUs3w9KYq3VeNO+KtRrQ/Riq+mKuxVT
+                I+Hriq6MhV3Pf54qv98VaU1O2KrZUZjUeHjiq8UAAruBviqxunXFW06de/XFWj9rr+OKrSjcT2+nFXBS
+                BucVVKHjt4YqprG9DirTKR12+nFXcG69sVdiruDN06Yq3x3pirTKwG+2KtcT44qu223xVxoRtirYU0xV
+                vb7sVapyFBucVaKkddsVX1HGld6YqsCnFVwBpiq8EU64q2CK4quGKuNKHFVq7YquOKtjFXYq3iru+Krh
+                iq8YquGKuxV//9T1TirRxVacVWHFWjiq2mKt4q6m+KuxVojFWiuKuAoMVa496/RirutdqYq7j0xVumKu
+                piqxkqa4q79mn0Yqt4bYq2p4jpXFW+H7VfemKtH4vbFVpWmKu44q4Driq5dhirXc4q5fh364q5hyNemK
+                tcRyxV3Eb4q2F2xVv0+9cVbCcTirdadsVaI2xVaBy26e+KuK02xVU6L9GKreVe3TFXcQ3tTFWuG9cVbQ
+                UNfbFVxXl3xV3tiritRirXEYq1wHKtcVbKginvWuKtAcduvfFW+OKuC0NfoxVvjiriNiMVWBOJ8a7Yq5
+                lqa4q1xoQcVXH4tunevXFXfZ264qt4dTX3xVqlcVdxG2KtgCuKtt06YqtIBxVdy240xVaVAGKu4imKup
+                irYSu2Kt+ntSvT+OKrqbUxV1a4qtO3bFXen3riroxv8ARiq4sVPTFWq+2KtGMeOKtFRsMVVB0A9sVcF4
+                4q3TFVvEVxVxSo+7FXBaDFWvT+KtffFW/tV7d8VcUrirdMVb44qtZKmuKtdqfRiq3hiq5fhHSuKu4ftf
+                TTFXEctumKrStMVdxxVwGKrl2GKtU64q5fhNcVbYV3/DFWqCuKt0FMVbAxVsJ3rirYWmKt4q6mKuAxV1
+                KYq3irsVXYq6mKrhiq4YquGKuxV//9X1Tirjiq0jFVhGKraYq0QMVb7Yq1irsVdirjWmKtYq1viq6lOm
+                KtEEHFWt64q6hxV1MVW0NcVbIxVqntirqHFXUxVxHfFV3EU98VWccVbocVb4jFWgvjiriKdMVbCjFXFc
+                VcBtirt8Va3/AMxirYBpvirdMVdxoNtsVaCg9cVbp27Yq7gPDFWiKdMVb47Yq4AYq3Q9sVa3rirdMVaA
+                xVrevt8sVb3/AFYq6lRvirdMVW70xVsVxV1DirRG2KuAr1xV1MVdQ9sVdQ98Va3xVwQV9sVbKiuKtUOK
+                uC164q4rirfEUxVoCvXFWwoxVriK4q3TFXb+OKuFcVbAxV3EHrirVD9GKt8QOm2Ku4g9cVcVH04q0tT1
+                xVviMVbpirW+KuoaYq6mKuI22xV1DTFW6GuKthR4Yq0Qe2Kuoa4q6hxVvicVW0NcVbK4q1xxV1DirqHF
+                WiuKruAp74qt44q3xOKu4imKuC4q7jirfHFXccVdxxVuhxV1DirqYq3TFXUxV1MVdTFW6Yq6mKtgYq2B
+                iq4YquGKuxV//9b1TirsVaOKrSMVW0xVqmKupirqYq6mKupirqYq6mKupirqYq6mKtUxV1MVcVxVricV
+                dxxVvjirXHFXccVdxxVvjirXHFWwuKupirQXFXccVdxxV3DFXccVb4nFXEVxVwGKupiruOKupirqYq4L
+                TFW6Yq1x3xV1MVdTFWuOKthcVbpirXHFXUxV1MVdxxVumKtcd8VdTFWuGKu44q7jiruOKu4nFXccVdxx
+                VvjirXHFW6Yq4rirXHFXccVdxxV3HFXcMVbAxVrjvirdMVcVxV3HFXUxVxXFXUxVxWuKuAxV1MVdxxV3
+                HFW6Yq6lcVdxxVumKu44q3xxV1MVa44q7jiruOKu44q7jiruOKu44q7jiruOKu44q7jirfHFWuOKu44q
+                7jiruOKt8cVdxxV3HFXBcVdTFXccVdTFXUxV1MVdTFW6Yq2BireKt4q7FX//1/VOKuxVqmKu4nFWuJxV
+                ricVdwOKu4nFXcTiruJxV3E4q7icVdxOKu4nFXcTiruBxV3A4q7gcVdwOKu4HFXcDiruBxV3A4q7gcVd
+                wOKu4HFXcDiruBxV3A4q7gcVdwOKu4HFXcDiruBxV3A4q7gcVdwOKu4HFXcDiruBxV3A4q7gcVdwOKu4
+                HFXcDiruBxV3A4q7gcVdxOKu4HFXcDiruJxV3A4q7gcVdwOKu4HFXcDiruBxV3A4q7gcVdwOKu4HFXcD
+                iruBxV3A4q7gcVdwOKu4HFXcDiruBxV3A4q7icVdwOKu4HFXcDiruBxV3A4q7gcVdwOKu4HFXcDiruBx
+                V3A4q7gcVdwOKt8cVdxxVvjirqYq6mKupirqYq6mKupirqYq6mKupirqYq6mKupirqYq6mKupirqYq6m
+                KupirqYq6mKupirqYq6mKupirqYq6mKupirqYq6mKupirqYq3irsVdir/9D1TirsVdirsVdirsVdirsV
+                dirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsV
+                dirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsV
+                dirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsV
+                dirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVdirsVf/R9U4q7FXYq7FXYq7FXYq7FXYq7FXYq7FX
+                Yq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FX
+                Yq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FX
+                Yq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FX
+                Yq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FX/2Q==
+            </property>
+        </structure>
+        <structure>
+            <property name="name">Logo_smaller.png</property>
+            <property name="type">image/png</property>
+            <property name="data">
+                iVBORw0KGgoAAAANSUhEUgAAAJ4AAAA1CAIAAAA/PMUBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+                YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAADN3SURBVHhe7XwFfFRX2nd2+7bbbXdLoUhCbCITxd09xDPu
+                PhMPhCBFWyp4IBCCl5aWtrjEFUjQ4BpcikOBBEJkXL7/uTdNKSXs23a/d9/99ru/yzC5c+6555z/489z
+                rpPj3/Ow2+02mw2fZPj4eOX57zm1f9aonf5ZHf0r+7E5HM2n1eHASf/5n338m0ELNm3i1BdhA4qA0/LT
+                +f+hpRbn3wlaSGD6eBFWgvSvpLHV4jAZ/9PZ9t8JWpplX+Rai8ViMBhodgWUeosdp8nexMD/2fL434pr
+                X4IKGAPX58+fF+zdu7Wo6Ott277asmVbcfHhqqoHdXWG/3Bgf6dAtjrsFofVbrM6jFaH3mhvMJobiaCs
+                M5se6e8c/aEwM/szzgwNUyJ3FuhcZRo/7urYhRe2nGg4X22vtkIvQhs22i0Wh9nqsNgdNpvFShs+xoZG
+                h71lQUrrVJx23O74qqQiJG2Kh0Dqy9X4cNTkjFH6slRMlipYEDc0fsqjR48aGhqaIX61nv5vUIAJIsGO
+                GUMqGCiJYLZZQTnG/8at/8omv0cgE1xxYooOo8naSDCxOJ7dfpq7emfW5CUpYYnCQLaAEaP0Fib4KJN8
+                NBp/kcqfr+stny6YvH7OuhOlJ+p+rKcAtunNJovNqtfrzUCZOl5Spb9YG6yryQxcn9UZ5q74cqgijsES
+                uPBETFlc+yihG1fuK9YxRVofgZop0PTUjQOuZrOZ7uEXztJvXHCDxWr+WaHTxrfFZgfi/6uP3wMtwKAM
+                UnCtjZgwBseF0nMZyenyLnKONzu0fUhU+zApgxfnp9B5S1WuQqmngOsSw3KNjPGMjPQK1QxRbpm/4XlV
+                DVkiasloVmw+W1owq91istlBSmu353eP4buMCPMVyQCtl0zhIRAHqLRMqdKDJ2ofHh0gU6V8uf5FUK1W
+                6+uI5rUYmY0WMkpCdg7bTwM2Wv+3m2m/B1rIYZPdQONqfeooX18xcfS4Ue8NFbUXKtylsb6aBH9dLFOp
+                9ZHijGVKtX5ala9SG6jWBalYLhGjWg1WdRKliz6vOngFjI9uAKrJYXtqqAMjQN61dJgcFgjBYzduD1Xq
+                OvHlTKGiky7RUyLzj+H1UWijJk6VfjJH8tHn/hHsXgJ52bU7zWIAuP4h/gLPYpBmwEoPFcRMzv/lx++D
+                Vq831QFXS409e3m+rJss/P0QlYc40TM2zkOrc1Nq3eVaLxlwVfuKVT4ilZda4iaWuIl0fpqkIJ3GWyJy
+                jua1C0uLmXiq8BxB1QFeNBgd0L6vg9bsMIFlVxeUeIVzOquSXTmytuEsf6ny04xlVx5U46dqgw2fz82O
+                89fu6immghx+Cdffw7uUDIYNANu7/OjpddnFX+wsXr696P9JaME8Nsdz+55vyuXd5SGtRmqZyjGdEmM9
+                FDpPeSxDEeerjPdXa/3kCi+B2I0tcxWpGXKdjwp4qz0lGoYYglrnLY5oFzmVNeXeiTuE+x1mC5jSbKJF
+                3ysPq82odzhS0pdAlbpwlF4iXfvR7D6ahOdPG82wbwAAZAAl1s214PAm/foSlr8HWrvDaMTwHI/0Vt2U
+                mT05sp4iHTNS/P8itLAgLI7Luy98GDYe/KrxVaR0SxS6c7V+krhAeXyQQucvA6hyBl/lI4kNUI4J0KT4
+                q+N85QBV6SmEeQXjWesnTWDEsjtErJmSVXvvRwoWs1FvINi0dNjMEIOjtGN8+LoObF2wOq2zSKebnfFy
+                yIJgbLU1GF5pEr8imPWPIDKbjQabDY8+cuPOAJnWK0rgJ9a5chT/6L5/8e+/RyDD7DQ+Nnw1/Yuo9qEK
+                NyE0K9+VrQqW8xmhAkaE1Jsl9+UpfAQKH6HCSyRnCOO9xEpXjtSFpfYSAlEVUyTz4Ut8+JN907jvhXMD
+                w3dvy4WxbDE3NnFei2xrhkjsFCFwi1YylRPah8uDOcoVObvMxGC34bPRrIepRfHvy0FkOoz1O3DFWOAN
+                QL/e0+tX5BYwo3jeXLkLT9VRHPcvhu4fPZ6G9jnRJPBWzcTqJWE7SEgi0IhN2GgyN1obay019+quPdBf
+                q3PcdTgelG7YpO0tl7uJU/01cZ48rZdI6a1Ue3Ni/QTxASKtv0DhzYWRrPCWavzUUneh3FOsYEhU3jK1
+                jxwnvuBM8pMBbJZr1FTuDP0NaFI6pm80YiDk8RiSzQHvxYwRQLWbHEYSeOoUFRms1HhIVJ4ceecYxart
+                FQ6LGbIcLrLRAd6yG+0U45OuLLXmugbqOpkJbraTh7R0EJmLniyEQdEPGYARvpbFYWjESHCjZNxHQWyF
+                J0vhKdB4SXVE0ICmLOR5eivutkKzU5fI020mo8MMr1pPlpUOaxO9QwYAg6CBsrTJ33gYnoNHwFG21xPn
+                2WwkKBAPus5GDYR4l/iROPQmq70W+gG32YwNEHO01Q47j7ZASZ82u9XQgAFT0GIOQBG6DhYNZa/CBrY4
+                nj+sP339ycFjV3fsPbeu6HjmtoOf556Ys+tSRnb2Ah03sn+brjFtRyvcWSpGtDZApvTXKBk8nDJPrhxf
+                vIUqX6nKV44TEhsn9DFOfKGhVXpJE5lSjbcI0Mp6yA9tO+Koo+dvwtoQzsM/g8mqJ44svSI4ax0Ov0hO
+                R5bAXagKUib5xUiX5pbTNNHcRk8Z7+ZakIjjqcNRA4ZrqId968ACwENtWeKT1bWSYAie8oQQOdWt3Qaw
+                G22O8nPXurEV7uFCP1EcfGgPgZysJUUzFMSkX32DqTnv1NiA+cBbNz8zNgK+GoNj77mLW3bvXb4zO2tn
+                9uq8/M27Kk5duVmP4AA1NWoGRqsBbEb5WhisrQ4zedpooQ3y2iZlZTTaDEabiU6IXHvwePuuvcs3Z6/c
+                kf/FpuzLtx800bXdQkFLE5TV3KjH1HCDucZaderuN9knpm6uTFtVKFuSy12wPWze9hFZZRGrKqLTxof4
+                Or/t+2a74W17h7TpyXYfIvJniQKlWn+V0kcm9RQpvOW6AG18sE4XoATAwJJGl8a1GVpYUoBW6isc6Ryy
+                JC2z9uZzQp5WPRXxIdAa9RYsHKYNYr5So5+9aVvMhx95saU+kjg3vsY5Ruov0vgJZAF8RYBIFQQRwON7
+                c7mizz7dfubMEKWiH1cVxBJ14gtDNLHlB45SVA0Cbgpi/Jp3O0cK+kaL+/GkXqFhvUXiilNVWPRqs6Xq
+                Wf34Jav6qpLajuK6sZWdNeMQGPFgCZkCiWsMx0sk8RAK3Pkc9+joHlJpTtUFIsH1GDosAxuopPzalTEZ
+                WZ1ZYu9IDpMrChDL/cVyTxbPI5wVxBEPkMd98uX3pWcuPnheT3iOsCeRWGSkdguotH80v3O0tJdQ2ytK
+                ePB0FZrQ3tehy9fjP5/bS6jqIlQHi2L9BbE9IoRf55c9NVkMFiLoCLTQJBTfYtLmOlv19acHi87MXVHI
+                nZcTsSAvavaOkekFYekFoxYVj1x1MHrJ7hAhv7PL3506tXEf3LFLn1Zew10Dhrp0G8kYpg1UqvwUCh+l
+                ChEopg6iGGaUzJMn8xBBINMyGcxKS2NyMgRQxknd4ka1G5kWnXr3zF0AajA1mIgcIwPCkDCNY1cfqqbN
+                DYoQ+ctj20UKOrIUDEGClzCeKUtw5YpceXy3KLUPP86Xp/Pja3oqE6SfzS+6cjM4gsVkxfmI4ty50s5c
+                acXRcxQFgxdb9Jx9eKogjrqrSOPFFzO5gpKqq+C7Jd9vCRQr3QGMKM5LluSKB0kSXCNFvjwZQ6h25kgZ
+                Mk07ttBXogoUyoNY4qKLt6FB8CCQxYWnT8YuX+rPFwXKtJ58OUOmcxOrXQQKZ5HSHY6CPNZDonETKP0E
+                qk5c2dKtuQ/rjJgyEc42RDb1RHg6HJ1jRJ48tZ8yhRHG/6agwmQjQmXxhh39pRrPGKEHX92WpXg/WtWB
+                nxAcLflmzyH8SglvI4GW2BeUPGlwVJ+4tePL0oR520IX5YctKIrOKOMsLI1eXsHL3MXKKmetOcSflT1k
+                YE83l3fe7NHRv6+zf892HQZ5unZq9UFvF3+OR6jAiyXzlSl81HKGWuIukXrwIZ9p8dt8/gytD2mQ0jUO
+                0St1P8XF8vMYhMmO6UAIE50PuYM/9p+/NVgSxwwX+Eo07jwFVtaTH+8crWAItQggewhFXvw4f3GSHz+W
+                ESVhRkvYkz8puHYnmCtxjtJ6K8Z6yuL8OOLdx6oIBZstVP+vPjzE8d48rVu0zE0g9+QK9964/9jm6B3F
+                ZfBEPmI1QxrvKoxtz1JjAB4xUiZAbQFau5EIvwOXLseMn+gSEeMjVcEy6MCVuvDl7mI1lLSHSO3ClTnz
+                ZECaoYp3E6hBK3CotNNnX3/0DKRX3/CMAGSwwdkL5Mja8dQdlSkeXPX87/Pw8+ItBQNl8W6h7AB5grtI
+                h1H5qsZ34MZ24yo37D/2vEm8mwi0dipM32Cr3n9h0/Jcxaytg9MLRi8rF2SWc5bt4y8sjVpSFrMgPzSj
+                OHLNXsG0b3oPCvAMaN2hj2tQjw6MXs5tB3m369z67707eo507hTtOUjqz1UHatV+OhUcWT95fIAsLkAT
+                CzeXqWwWxTTMGj+lxE2g81XEtA0VBHAO7zwIaKFoIUwocUSZRw5H0aET/bmiXjxxV67QL5rvGSP2VyR5
+                CHWwZYKksR7RPMDgweKDaQI4oiCeRJe5YvuN2+5snjsXbJHgKlIx2cKjl2/SescIo6aFo3WUPEA2ppMi
+                xVumdY1gl124/qDROiCKHczhBnAEPlyplwDMp/UVx8Ox9hcqWxLIGPPdukbZ9E+YXIQ/49tF8UAZ3nyZ
+                P1vYXayKSp2inZ0h/WhOX2UcI5rrFs0B0pBAjBiZ+0i2buaCGkqwGE0NRIYBWpbYRaBuK47rwJLHLVyZ
+                ffhsMOibJfZlS3B6RAtAZIF8hV+MeLBAs2XPQVADsZZsFNfCXtHbHx2/tnV5tvLTDYOWlIavOCBaUMJd
+                VBwJUOfnjc4oiJi7PSSzMGbdPsXUtX3DggJ6tHHv5xLc35XZp2P7AZ5te7u079vBd1D7diGu/hyfYYpA
+                SWxQXGxALBVuJKIYMpk+XxTLCl8ilpXuIl7bSJE/p3LrAUyGxKaoExwGkGmZDDsIcuaZwQSS7MKTdIji
+                to0WBioSAzkKmFFUKoh4P3TY8rnBUX7iyhCOyj1a4iqQeMuVQTzBofNXTETavc5C9pGP9eXFebNV7iyh
+                TxR7/4XrWOLnFttTuwVPX1W0ixktgtD2F8e7s6QebElLZhQap8xdEsRFKDQWAtOLo+giVI5OGldceRxB
+                D0yHNmhhtW0p3zdarfHkiOHqu3GV3jxNAFs+d/3WRw1k4nab6anZ3Fus9BHFOvM0nmJdoEAZPmYCpBeC
+                rH4xwsHKuEkZWV/mFnxXWLxu58512/Kv33/8CzMKvZy7sefrosQlOSHLdoVn7eEC188KotMLYpaW8TPy
+                2cuKRYtzuKuL5Bv2J05bMWSoqyvzT+92/bvHMEZwPzfn/m7tB7gyur/n3f39P/Vt/f7w9kEst1CZl0zm
+                KRO0Z0W/NzLyvdCoVmExrSO47WKEkEQeIiAKk0rsKYwPjFV7yGRuPG1X6YmcowCmwUZmhcOsbySeD8x2
+                CDiHpQ4UbCWRSDg/fhK5q1DuxVN2ZatWbN1jh4NB9Auy8CRxAUovOnmhL0/ZSaL04PO9JcIgLqfywmVA
+                S+UyWgx3eYrimWxNJ2GsZwy/l0hWWXVF3wgvmfhjjXbTii1bofa6SuK8OCoPrgqE1ZLzU3r2Wm+RziNK
+                5sbRePI0QUINN236PdhvqBag8mVEhVJUCMX5Y139kNQJ3iJF2xiJjyLJJUI8SJ5QdZtGyIi5BIRGBUBE
+                8bWgkiCJquPIEE8pDEbppxt2PKbsqTosFKxpWyPt/IAliK9osYJrG36wV6w/MGX+DvaysujFRSPT84Yt
+                K2Ot2CXM3MXN2iXIKuJnFQgWbItaXiZae0g18dsBPbu2D2zdavAH/oPa+AW3aef13l+C332P6fSmu5OT
+                /5tv+Do5+Tj9uZdT+6F/8Y1q1V3tGaoJls/gTJsqm54m/3Be6sKFcempfeIkbSPVniLEHXVeSr4LR95V
+                eq7oNIkOtmzmwBMgZgVLDFEM9vLla5l86fLsoia/gUharBZR0hUXf/DlCL05Oi/wjUgZyBYdrLpKebpY
+                UitCLi+GG5tDGd5cJYOvQfwSRBPIkVRcuoYICeU4Qj04VuzIDeJKkTEkTq1Ai8ZUkpnIPgcMWUhRPbJL
+                ZPQJKzYEycb4iBOhHX1Y0i6RnKOXLptbzkMfunLZJzLSnSv2YClhMXSR6pLnphOZDN2E+UYKfHgaH7YO
+                0HaUShlcDmzmTUV74BWS51Mii8p4v2weOtkdzw89+HpVWeL8HdGAdklxyKKCUctKuZmFgowi9qJC1tJi
+                7upyyaK86PTCqDWHZfOKI9jhXT3f+rOfU+uAt9p3eOO/3nFycn3rTeafWvm+/Sbzr293fr9tWOdeY9jy
+                OUlTNy5cd6bgWM2Bh9fKruSuyd+38+CTqpq8BbkIVEk+4CT6qxQeojg/VVirUbr+mmv7rv7PQPsiri/m
+                cX8rtJQlQHEKtcqUeUAu9VCnOYeLPfmx8JSCRer4WQuqDYRIWjrgD2hmzQ5CCJOt9oxRekSLYsZNetxo
+                gm4CtMHhPAhqkDLMxo4isZ9QuGZ73q0awqNNugu2kplEbF7q36nBcG/DkUmLcoQLsiOyYDEVhy4pilpW
+                Il6YLcgs4qXnRy8sil62TzCvMGx2XshXR+RfVkqnxsd4vflnnzfaDGB0Hti9a9joAeMT4tKnfbYyM3P7
+                xo3FubmVe/Y++uEOeVajtfbu46Kv8jZkrq8sOGi403iu8Oyk0AmR70fo3NTx/kq1lzihk3ZYqyGfKmY+
+                v/6MgrbFPOg/i2tfXIJ/DrRUsIkUndgcR6vOu0ZKAC0Ehhtb0VmsWVdW/vqCDNy9fEdusFDhL4jzFcR2
+                iOJ3FUt3nz0PAQNoA8K5kCVMfjzEiatANDQx+VZNPTokWTKQFBXcQEzi1+vmdPvJUTAocIWttLQkMqMg
+                HGy6rESWvlO0skSSWcqbXRA6pyxsdtHIJaWR3x6QrcqNEff3He7tuWLanFPlR86cPHLhyvGap49Melu1
+                w/7QoK+FV4ej0XSyZM/i8ZMTQ2NmpE3a+e1Gw4On1w+eSxyl7v92b5mHNDUgFSyr81fA5gr3DMlflUM0
+                Jon+tOh3/t+A9kWYfyvXUpqTNuGIYMT/tUYzSrQCxPGQ2AyBzp2jhAzfd/UmVsROL8urDrvRevDi1cAY
+                kT9Xy5QkEB+JxV5dXGqC2oRtES0Ev3pxdQAYJmnSosx6C1kj8KmBOFn08XLMHJecjl/ZuDA3YnFhZFZp
+                zJKiyIV5YUuL+ctL5Rm5EqjY5XtEs4tCPykavmh31Nd7JGs3cT6cGDDS+c3JPNazq3dBOfrG2gYD6p2I
+                gQNSqjNYLl28tnHtemloZG9nd92w0dtnLzpz/DAU3P3T5xJH83v8F4PrMjopME7DiFUhgsEUj2o3VDVE
+                du/0rZ9iUC0Krn8itK9MCv1WaM3EU26Clo4kw6j5YusWf0ksggwd2XIGV4FYxM0GEhQk8rqlA+VHNkdQ
+                lMAjXMIQxHkhKSqVZxUWo3/c050Hr0LnGqMCoQTLNWuKdtPPpEMRtJy3Q8n/SuI75VTOAL9mlbKWlbEB
+                8KK8SMK1pUKw8sIdUVl7+HNKI+btiVy1V7xum2TB5EHCrm9x3d/9auoEW3Ud5Sni6XqrxXTl+v0jOXtm
+                p04fFtwrsL1bRN/By2bNvXXmLLFyrebrR46mRnIDnf4y6E/uMvfRcncu7GcAzHNnDXMemDFpge05ZUFZ
+                aIv01cc/C9qW6pl/K7TEumqGljKgYKrO/WI1/CIPrgLRFR+BsqtQAYeNTAoJj5YOswU3dmIJPCOkCL8w
+                5PEMgWTm+g0Qs7inm0DhLtG5QAezFF1kmt1nrtAOOg0trDOkUl4N7doiweKC6KwSTlYJb0khe0lhzNJi
+                9tKSmKUl0Rk5CFawZpdFZB4UriwUz505bMJIf2mrvwpd/1qybGFTosFienD5wpeZy4VsZdAHLh3+/Jd+
+                AcGLP597veoiLa5MZuvzq7fGs0W932jFbuUjfL9T1NudRR1Hq4MItOyOURNjxl2uPE9pWBti8f8D0LZU
+                z/xboaWjoVYjVSZCpWOeOeyTFy0AtF4ijY9E581XdOHJSJYA9E3KCFo4zAa0gb/OZKt9RYkd+SqXCM6Y
+                9CyyILCQudKOEi2y4V5cdTBPdvDCTVKQYoLfZEX4pdGCb5Qy+JWJ4pSxY0hGfgwsJpyAFhgD1MWFYZkl
+                YStLBYgyflYcuvSQJGMDJ1ngF+ftMq6V+8zhXW/vLkDCq6xk16wpU6L69fV4t/U7Tu916howdcak8xfP
+                UlUr2G9FKPXRg5rFqdMGtfHo4/RX8XvMCKeOIU7eQrdRQp8YlaeM58nKydhGxRFItgd8abG2CO4/i2tf
+                WuDmeubfCi3NtYirEBuKghYILfz+G0StvcQqb7HWLUaE/AQuEvYjNk+L2IKzqSpQBaB1F2iDJJrZX2/G
+                mkCUB0QLXMQoYkjwE8YyI/n7z1xzGJB3IBkUErmjeLfJSv9l907LysNgPWUWRy0ujIBMXlXOzyxigY+X
+                l/EWl4kX54Wt2s1dvUvz8cQRYwMZE93dkpjO8yJ77p6V9t34+DCvjs5/cmr1llOvfkGLVs398fp1ZAoN
+                FBlTEUOz5e7dzNRxQ50+CPuzB+uvTM7fAmL+5h/yhsfotxhi5x4RAcN3bCqsbqSIjuQbaXR/uxmFzBmJ
+                ZpAaUtoP2HfjlieH7QubU6J2j+J3E6tzT51D+ggNEaAlAQOQHaIbFjPJqlLW5tFzVxA2go6E24pMMFJZ
+                P/u1ViJMvywoQQAILq+fPBFWkp9Q25TSo5Jlpmck5QZ1siWnhMERBCg0DBGCKlII5EeQ1cQrokJQIAOg
+                /HNulU4H2u4+rQV3uiKYrEjylsX7RvCytuWRhbA7AljCdlI4PzpEN715ooNnr7ZMIr/4xWlREaCNxplZ
+                TE6IYuAKsQzXdmEJL6s4+st9oqU7xGna3mP8PKb5eKd18hzfuaPO64OwVm8Pbv2+bPDQxTNnHj24l1At
+                NCXSwDZTramBuPONDV9+Nrfz263C3/CMeNMr/C/eUe8HRnwQNOAtt57/5TykNbNo2bbqe2Shm/xBK4EW
+                ycjfrGsp2qCyvFg5kusov3qDKRKSeKFAjtgvbJk9V27AfbRa9A7jM/iYaE8SLHbEMvUoV8YiVhw5Da59
+                JbSIhqHBF3lFiGPAMkJEEBYNGhuJs0O5tLQHQiXYv8vNQ0zbX67tyBF7cqTe4eyCo6cIY8HSoXQkbW9i
+                kk0Mhy8G44mrNxBXceEp2wlUEObMCO63pRV/FNrVuxSwnoAoLCl8gbWckR9F1G0xe34he+Ue7vqD8rmr
+                QrVhPsk+7tMD/SZ2Y8S5t5K0f29c3z7Zn8+7feC4rRo5fYqCqXHT6X5Do37L6nXDPDp1f6vD6DYBIa39
+                h7/rPeQvHn2dOvRwen/033zHdAt3XK5FU8zTSBQHbRrYTKQg9TebUQQqu9kM5Kw2SL5dVZc6I3zJEYFx
+                mXyl92juvkt3KKkPgqsjEh9IGOpRkYHMPx5aZ7Z+vSOHFsiv4FoTsVRXZecjFIxoVPsoMSgALI4qClR+
+                NBJFSap2IKsA2IUHt1A51SFS6CuN9xIifC35uriUAokQAVXxgJgaKi8tdTZDgw0ihgS/V27LgZvkLtQg
+                E4CcR1B4DNKxfxTagnPp6TmRULcwoyCK03PCSciijI3PuYXRK/cJ1u2TTf+4j7y381gfxuQA35SADhMH
+                dN0yJe1WSYnjmZ5GEmqVaBOQLbULwGY1b127boR3Vx+nv4b+LaD73137/s194FsdR/zJhfMnj6R3Oi0P
+                Yu/nz3CcfYjb6y22BnBFk9UHpvvtApkijCaBjEoXg7Xs9Hl/Hh+sA7XnzZEFxcg3lx9HPQNlU9L2JE6k
+                Do3Pa5/geZDVYz6ZhdA/8UeFWrDmLwQyNabl23MALRwblACgZA+NIYbJY0l9DqmjIUFskmg1Dx37EeJH
+                iDP7oJSIK9HO/AwWFNJZVBkQEcYk1fbTrrNG/XOQBn/8h53EGh9ZIrLCiHKMlGuemIh5/IcE8un7BYty
+                Oek50cSdLSPWMjh4xW4uPKL5JZFZBwWrioXjE4LUge3G+wekeLvpGH9fOTW15uIp2AZ4sN7iqGlESQe9
+                aMQKAhXu3bElxIsZ6PRG5J8Z4U6eo99057zto3gnYEr7/t92Fe8bOvbc6Ck3oz6tKT6FbADN5T+7ZS3b
+                yC2aUURaYM0oXUttHzp69bZXeKSXUA4blcGW+0XLpy37huz+wWah6ucgP4MBeUPwK0wgsrMl79ipgJBI
+                X2RpfoI2gC1+MYaMIDGgxUVfKkUTqEgGizfZpY0mh8GM01TzzN6ISijbgh27ugrj/EVxKMZwjeAiF1l8
+                8jhRMxZo3Z9OaB80huVstxWcOx8Yw8fTmdJET7bSJ4wze9VaOt70h6C9WVP1RYU6PZu9OJ+3crckswgW
+                Mg1t+MJd0ZkHBUt3clJFPsl+rhP9gzVu7ZIC2uzJ2eogpR0o3SFlOwRQFCNaSakVSPjmgYqEgf2Gv/H2
+                NL8BSwLZmQzuas+w74N4O7pISvvqTod+eDF6xtmRE08MGnv163xHNdFzpM6NOoggbjHOCOppIT0ALiAJ
+                XgpavRHtbtca+slIbs5PrMH6ekcr+sqS9ly4CRRpSqILi+qtFuB97skzzuSZAVwlFtdbqEM8D1z7ErT1
+                Rst3uypwEek8d56KKYn3ZMkKSiv0qPahHtvUKeUFXXqiHyKN78RXEzHAk/vxJIKpHx158GNTyAizRKkV
+                sXAJbdQZzKyp092juM5REji1rqOFfQWKqtt3iLPwB6Gt1tfkXpiRWSgGuoAW/g807vJd+IxYXM5efFiY
+                sTVmPMt7oi9jom+Q0rXNp8P8r5464zARow9lfJjT84c/HMvbeDZnvaOm+tm5U7PFrFFvOGX1H3xS8eG+
+                oSmnRk4/M2z81YgZlyOmA9GTw9MOD0ze3z/hyNCx55dtctyvBiT1VoPeaDDR7sHvg7aZa/WkRhoibvKq
+                L/1EShgyAZIEZNdbDY4YlTxxVVHpQ3ifYDMqvHD9ad1XRbtGJo5H1NeDNkEpaGEG/wJaWN02x4FrN/so
+                491iJFDGJEHEUQyWawpOX4TfguQ5KVJEBr7RcLH6MST/qs05yACijAu9fRAOF08yYtyH2YeP39WDA5qe
+                /qPF8VVR2XCVpmM0G+U1rmzUDMZ25sctWL8NLAuJ8kehRS8HHmasKFXN3xGzvFQCpZueG4qgY2ZxxJIK
+                1uIjoiVbYj6M9Jrq6zveO0Dh/sEKwaCnV+83mXdIZz16sDH9E2UXRlpvZk5W5vrpEwVuHyS6tCnjCE9E
+                xV0cNf76yI+Ojk47Fjr+0LCUw0OST49MOzV07MmByRdGTri9LsfxpBbkCQOEjuqQo+Xd7K/hWmLCoBtI
+                ZXiCjcScyTt7kYlgbLQIOg/hXFeW1JcnQdi9j0KaNnNB2sx5kuQJg3iSLlF8JkeOYquOomRAi6T3r6Gl
+                LeRbRmvouClgaBTdwYxCY1c2v6s6dkTK+Nh5GXHzFnTmcHrJZQsLc8kkkMyZOReZWmc2agATg7TjWofy
+                OkZEdJfKwcFjFy2VffRZT+xCi4lhiPieQgkyj0xFsp8oMTx15m0EJKiF+KPQoo9G24OCypVzNvHSS6JW
+                VPLSS8MX5ISs2sWZtyd68T7xmkL1BIXvuE6tJnq1k3i8Pz+B//SZo8ZMiLT68Y1101O13i6atu8le7pw
+                u70r8PrbJK/gLX1lJ0ZPOzN88tEBiUcG6U72T9o3ImVfaCpAPTdozLGRqUdCxp0aMe7ansP2J6jNRF6A
+                7FfFTEg8vEUriqwXWMQnVMAUj3XjpzDESWCvufkldPbmJasaMcuPVn3TU4AcGQ+lSW35irYitX/8h21Q
+                RCFMcBMltOHK3WSxvorY9iGRAxXxS7YXzC8tcmfzg9Wp3sKU3soJxaeug8xsiA9Am9rgDtvXbM/vLdKg
+                MMpfM7YddjBwtSjQcePr3DgqbGgIliT6cTTz8/bTOeMHNfVJH81ihrB9uSovCeqq4j0ilYxotTdLi+Qr
+                kxsXKEwKECT68xN8xMlukQrfcIl6xtzbT6GtKbPFguANChAc/tFizNRFmMQUJwVEiUvOXqZnCr+8eTsT
+                VqB5u2nzOtAl5pabj49tPTRzfm74rPzBC8tGZ5ayEJyaXzpq0V7O2nL1xxN6TOrZbozze1oft+9mTX1W
+                R6Iwhvu3v5sxUcXooOvYekp3ZmpXhsTvXajkjK6Di4fGnQyZcmrIxKMDk44PS8InuPZIaNqRAYmA9uSQ
+                MfsGxB0YkvTg+HlS7UL2QROPh2gfmDWvgdZuxlSxewCBLD9hMrFT2KJFeflEJdFvGfrlgUKWT75Y30ui
+                QhGTn0zjxpOiTgW2a9sIshmXBIxECmTssddj6YadkKgl16/6RsWAiTuGCHzDxIUnzlNjQe07RkU2+92t
+                M3z+1fedefIOo9kI+0HjevNV0NCBYi2TJfOJFHRiy1eUHoKL1VhPbAgI6oUbdwzWpiAhj8L0TsokKH7Y
+                2LgLURHiIsdI8B33dhNqPl23uerhU6xDI4qZ6b1tdrIRpnOMwC1KioIsH5Y8OJxz4OL1xsZGEO6v5/vS
+                FQpa4u3rL/+46+uK5M+3D5lbOHzJbt6iEsmystDFBzhrj8YvSA+bOMBd9e67Yzv1OrplJ2TFs4tnv02M
+                BbMmOL87pZvH2C5uiV1dUxlt07v1yB4hAYonh006PjDt2JCUE6PGQBSfDZt0fETqof7xl0ZOvDA4tby3
+                ppI7RX/zIfH4QSU2FLdTNjYCWc15qleM3fzUoI/WJgSF8XzD+N24sqEKVebWTXRD4jaB0qmDRhp93qmt
+                /7a4TDxpSg++0D8iBiF45Mg6C+XdpcouQvEgpfrjlV9glx8VUnBce/J4tEzehyNGYcMQibbibBVlmpHy
+                f9iLxLFxOB7qTWvzSnhpkyHJu2P7UijLL5zVlS3qxuL3F0jCYhO/yC+h5tGAXSq1ZmKmnb77+KMVXw6T
+                xTLYXOewCH+RxE8o9uULcbpGRgdJ5bO/XFd47OQzrAMdNSSTcVjrG+CbVdfVjpLIkbINZkv8Q6KHCyWH
+                qs430zFmaqKOV+4ypcre4NYR7+V51f3C7/ZPmJcd9Xl2xNwC7rKcEfNLkBtQLVrDmRDKFL7zzoyB4Y/2
+                n2+8dXqxmid8/7/GMN6f2tcrrZ9nUlfXWK/Wmf5dsgdFH4tMOj16wvHB444OHHti2NhjI8ccHj3u9PBx
+                xwYmQdfeiJx+rl/y3qGJt+d9B+uQksJIPRIiJA4xXJeWY8jwU8jGT4MRvAuOhHBGOJ7aJ9TiQVe0AJK7
+                z+uKDh1ZtyPn29yirE1b1+zYua/qwjMb5WbCIUEmm0q8Pap5ivUFHuifWmg4Ss8sFiwQWmDHEfE10dtT
+                k+3q/Uffl+5etT37i+y89YVFBZWV5+7cuVFD9oJarIhKUVsVKCsXFIZbGmyOyjt3Nx889PWu3Rlbti7e
+                um3j/gO7Ll2+ByPZSIJ35B0BRrDjT4lC3N9Qjc7qrDbMF5PF5zMkA1qYbwsCmZT/UHVFjsYL98u3VM7K
+                yJfPyo7J2jl0QeEI+D+r80Sfj+2lCf5gTmTo3byi5Tq+zLu1yP2vE4Yxlf3dhIFtJnfzy+zRs6gf+/Ao
+                3bmItFPDUo8MSD42ZCw4tXJoIjQrcIXePRsy4XzIxD1d5AdE0xwHLxLfnZKjYIqm1OPP1tQr0LLoa/ES
+                CbQkO0SMRFhhOQBLM802a1wjKoGJBIV7YTUZ9dgASFj5J58HP5CgBf0sUlRE9oORYLJJT3jfRvItgOS5
+                od5gJptw6F2ECHUZjXqIBkq1k+GROBo9GBPq4ujNwWRXGYUrgZbQ6gtQ4aENjeB+yh+GECBuNUXICIrB
+                i4RQgGIywCMzNVkPZAcTEbwkE0zF1qnICCnswnRoEfWaPaW0rqXyTdTLR8w2/cPG84d++H7zkU9WFCCq
+                HJW5O3pNGXdOej/ZiHdie7Zbyhulav/3BGYHTWdneVdndU/GuC5By3sM3xuiOT4y6XTouDMh444OTj4y
+                KOnY8LFHR4w9ODgRYpn8OSSlKmRiZb/4nD6Kk7O+cDyFwGnC7xe5vJazejZrk0amiwqQzqQ9yhetiWbh
+                TK8IOaiElxV7XowmLDS1m4hiEhKvbw5wUiqeBGEsxgZKiGHlqb1ZAAnLB1ppGitkjKGR2n2Fi6Cq5uFS
+                KFLjwQs6SA61+emIXNdRG+Zo9/fXJ9kJQoX06P0g9NOpTzzITDamEh4AlnhPCqUjfnE0K6CXrhNoG+x6
+                iBocKPakbjTrHY9v157NOZOx48hn60qT11ckLd8hTx3TXdm9jfRvTtMCmKlMz/FdmJ/06r60+6D8QeLj
+                o8YdGTjuxMjxx0ekHRk+pnJo8uFhKcCVfB+cdLp/Er4fGjHmxOCUA711h2NnVVeepYSVvRnUV1q5L42V
+                pncYEdTeAjpYCLib0gmYOQL96AdfSBuKYLHYegQx6PISu6O+kVg3lBKg/hH13hTZB7NQV6lurRYsKCmE
+                tmCpybIiWEx4mQjZn7gd/EkVJGEsdbXEzm8iOISFqS2GJKxtslHhZ9rKs6FQhiIyylSkh4Q9enV6wplQ
+                tI3ErQcKINm6BmheIgZIr7QMof6oN8BtJwf0a11dHT1N+sCVV0BLbSXAc6BisK/PYtPb6BfM1DieP7L+
+                cPaH/LOPc8/WF++pXLN5ekp6576fde8xu0+fVcNHFYYITg/W3B6cdmvYzHODP64cknZo8NiDQ8dUjhx7
+                eNSYyuFjADAJTfRNhoW8d3jy4Z468O6TVbnghFpS02VDGpmmbsR1kdQkoqblok7Mrrq2vrR0V35eTv6O
+                HQf27Ll45tyBir20aLpz587x48ePHj26a9eunTt3lpaWbtm1a/+pUxUHKn+4fpssot5QeezosaozV5/c
+                L6jYtWHTxoqy8h9v/whevXH73saduduyc4pLS548ekynYHGWl+5dtfyrZZlrD+w7QeHq2L33wPebt+QW
+                F+aVFNFJkR/vPjx55ASyNyTKYDKcP38uL293YWFFQcHuu/ceYXaVh4/OWTC/5nktrXd379+/eefO7Xl5
+                +w4frjMaH9fWFhbue/iwHuhjI8yhyiPVT5/UPHtcuruw3uooLttXWVFJFzzfvn7r8PET9MuSTpw4sWrV
+                qiVLlhQWFt67d++VDsJrt05Tq07pNhveOkN8uzs/VmYX7++mOdo38fyIiRdCpxwZllrSP7ZsePIB9pR9
+                w5IAJ8CDZkVQAhr35Ki0IyNTz4dNqRo0bm8n5Z5RY2+uzXPUgo9AN//YfH+JDGkbWC6XX7p06fz58zdu
+                3MjLy1u4cCFNsLioVqtra2vPnj27cuXK77///urVqzU1NUKhEF/QAO8Pmz9/fkFBweXLlydNmnT69Gl8
+                T0pKwk/4smbNGlzBT6AStMRiffPNN5988snJkycPHjw4a9asb7/9Fi3nzp0LukGzU6dOkcWxWkFPGRkZ
+                9FDxJ7pat24dxoA2eGkSLmIws2fPzs0loQwcn332GcgO2KCr/Px80GJCQsKyZcvo2zEdTA1zofvEgMeO
+                HXv79m2M5+LFi7gXFzGAcePGoZNz586Vl5c/fIgI2yuO10ILTiJZaDvZ1AdbA4SMMPidRzc//eao7NOy
+                frGHesZeGjrheshURBAPDU7ZO3rsftjDI8aeHJ6KE7oWSIOD9/eJK+ur28eZcm9ljuOHamCK3po2OL9y
+                UC1fhM6Li4sj2/Ip5ZeTk/P555/jC1DHcgB1ejVpxqUhl0qlV65cobvEauInrF16ejp9RaVSPXnypIg6
+                6H7o6/X19cnJyVg12oO8cOHChAkT8GY5rDW+vzhAPBfcQ1/BwEBtZWVlGB59I25JSUkBkB9++CH+BEKL
+                Fy/GAPCgkpIScN7169ezsrLQOQgIAwaiuHLs2DF6XnPmzNmwYcPUqVPxHeSyaNEi9BwfHw9QcYUWV/gC
+                Wvz1mv1jrqWsEMTaKI2F0UI4PGp4nF95PDUDIeIj3XSnu8Wf7ZV0ul/KqdAJ8HbODBl7ZeTES8PHH++f
+                eKBv7KEhSUV9tedSM5/kHbI/fNaUl4UT0bK51DKy5BdAtXz58nnz5gEkQAsyx0VonaqqKvxE62xwA5aY
+                jtEAvGYOAzDgHiCdmJhYXFwMSNauXYtmwFWhUIDpdTod7UWgDQgFa0eLCnwKBAKACvadNm0a4Nm8eTO9
+                rFhxMDdNE/iEhERX6B+DAVSAefXq1egBUF27dg1t0APYeuPGjRMnTrx//z54EfgBqvHjx4Mu0RWaYS4L
+                FizAwPCJweNeDBtiAPeCLMRiMU18uIhpgrZAQL8R2heaE12IeAKMAtSc4LrebDxx7eGqvLNxCw6MGrd3
+                YOLBQcmnB6Yc7KLcHyA91k17vHccLCYEK85wpv8w61u87YkwK0mY029UeD18Lf6KyY8ZMwZC7MyZM9XV
+                1RBKn376Kc3BWCOsKX0noALX0hpIo9FAqNLX0Ri8Ah6aOXMmIElLS4OiwnXggWVqrmAFoTx9+hRYPnv2
+                jL4RV9APBPuKFSuwmlh68BbdP/qBnKS/01SFrshLQUnNiR1QTZ48GTSEsW3ZsgVtgBbGAPkPdPEnGBS8
+                iJbgXRABPqEXMBc0w69AHUjfunUrNTUVVAKpg4GB5qBo8CuGAbBBo/j+6/jU67gWYhMnuecnX4yUb9ns
+                T1HygUu4+KROf+Lqg027L85df3LC0mPij8qj0vZEjjuu+PTShKxbc7+t+363o+KC40EDUAXDI65D6Bzh
+                AWpn8W89aC6haZZeSgAMrQm8saY7duyYPn06DTMgxxLT7YHi1q1b8QWCFwuRnZ0N8gf70hQAsAED2oMU
+                XnyPCfoBd0JxohktZrHK+A6tidtpO5zGEmPIzMykeR0UACrBQQ8Plh3YFwQBzjtw4EBsbCyuox+AB4bG
+                yAEheA6jQmOY9xDLaIO7IDM+/vhjXJwxYwZNQyAXKF0QCn0R4op+OsDG4F+5kq+Dlg4jUNV4TawGyUzC
+                MXbiYNIvWCAzgDV/t8Zy7lbdkfNP9p2s3n+q/uRl49U7hns/2vA6TcqdQlfYgte0pQn5ADOI4/ccgIGW
+                k6RPqxWCaPv27dA9QAgKqZk7MdtmswWkjZ8ACZQ0cMWNWFCsJt0JlqmiogL6DEyJBuAttKdHBoYGDFOm
+                TIGcAA/RChtXwKYvWqTACWIcBMfn88GdWHQIdplMhk8Qx6ZNm5ob48/du3ejDa2tIXuAH4YKeGg9AkpS
+                KpUgHfQJpYM2MK/A1viC0QJauiXAhj5Cbxi8VqtFDz+73S8s6uug/dn/I28OoSKCFKg4fvIJ6TdqNIUF
+                XnirD/G4YVc/x2sxHKZHxnra58L4qJw5Ud6/QybTa/SiM0foirKbcNDTozn1NTEaNKMN4Jea4SJtdtH3
+                ggtp24Tun2ZKjL95EV8M7L3oU9K3N7/RFaOF0U7309whHWSghQ09+BdpBUoUDV7aTkjPq7nZi7NuKSb1
+                fwD4NODYnGdVQwAAAABJRU5ErkJggg==
+            </property>
+        </structure>
+    </list-property>
+</library>

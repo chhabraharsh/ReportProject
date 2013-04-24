@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__Student_id_38_0</property>
+            <property name="value">294</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Student_sex_39_1</property>
+            <property name="value">M</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Student_name_40_2</property>
+            <property name="value">sameer</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Student_teacher_name_19_3</property>
+            <property name="value">Professor Saurabh Goel</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__StartDate_21_4</property>
+            <property name="value"> 2012-01-01 24:00:00</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__EndDate_22_5</property>
+            <property name="value"> 2012-01-08 00:00:00</property>
+        </structure>
+        <structure>
+            <property name="name">Student_id_38_6</property>
+            <property name="value">294</property>
+        </structure>
+        <structure>
+            <property name="name">Student_id_38_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">EndDate_22_7</property>
+            <property name="value">2012-01-08</property>
+        </structure>
+        <structure>
+            <property name="name">EndDate_22_type_</property>
+            <property name="value">date</property>
+        </structure>
+        <structure>
+            <property name="name">StartDate_21_8</property>
+            <property name="value">2012-01-01</property>
+        </structure>
+        <structure>
+            <property name="name">StartDate_21_type_</property>
+            <property name="value">date</property>
+        </structure>
+        <structure>
+            <property name="name">Student_name_40_9</property>
+            <property name="value">sameer</property>
+        </structure>
+        <structure>
+            <property name="name">Student_name_40_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">Student_teacher_name_19_10</property>
+            <property name="value">Professor Saurabh Goel</property>
+        </structure>
+        <structure>
+            <property name="name">Student_teacher_name_19_type_</property>
+            <property name="value">string</property>
+        </structure>
+        <structure>
+            <property name="name">Student_sex_39_11</property>
+            <property name="value">M</property>
+        </structure>
+        <structure>
+            <property name="name">Student_sex_39_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>

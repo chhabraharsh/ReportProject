@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 3.7.2.v20120213 Build &lt;3.7.2.v20120214-1408></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">fixed layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">ReportsMainLib.rptlibrary</property>
+            <property name="namespace">ReportsMainLib</property>
+        </structure>
+    </list-property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="58">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/futortables</property>
+            <property name="odaUser">root</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Easylevel" id="60">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">STRAND_ID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">strand_id</text-property>
+                    <text-property name="heading">strand_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">QUES_ATTEMPTED</text-property>
+                    <text-property name="heading">QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">RIGHT_QUES_ATTEMPTED</text-property>
+                    <text-property name="heading">RIGHT_QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">D_STATUS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">D_STATUS</text-property>
+                    <text-property name="heading">D_STATUS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">((END_TIME-START_TIME)/3600000)</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">((END_TIME-START_TIME)/3600000)</text-property>
+                    <text-property name="heading">((END_TIME-START_TIME)/3600000)</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">STRAND_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">RIGHT_QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">((END_TIME-START_TIME)/3600000)</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">STRAND_ID</property>
+                    <property name="nativeName">STRAND_ID</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">QUES_ATTEMPTED</property>
+                    <property name="nativeName">QUES_ATTEMPTED</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="nativeName">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">D_STATUS</property>
+                    <property name="nativeName">D_STATUS</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">((END_TIME-START_TIME)/3600000)</property>
+                    <property name="nativeName">((END_TIME-START_TIME)/3600000)</property>
+                    <property name="dataType">float</property>
+                    <property name="nativeDataType">8</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select strand_id, QUES_ATTEMPTED, RIGHT_QUES_ATTEMPTED, D_STATUS,((END_TIME-START_TIME)/3600000)
+from  user_topic_status
+where uid= 292 and strand_id<>-1 and D_STATUS= 1
+]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>STRAND_ID</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>strand_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>strand_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>QUES_ATTEMPTED</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>QUES_ATTEMPTED</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>QUES_ATTEMPTED</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>RIGHT_QUES_ATTEMPTED</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>RIGHT_QUES_ATTEMPTED</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>RIGHT_QUES_ATTEMPTED</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>D_STATUS</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>2</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>D_STATUS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>D_STATUS</design:label>
+            <design:formattingHints>
+              <design:displaySize>2</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Mediumlevel" id="61">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">STRAND_ID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">strand_id</text-property>
+                    <text-property name="heading">strand_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">QUES_ATTEMPTED</text-property>
+                    <text-property name="heading">QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">RIGHT_QUES_ATTEMPTED</text-property>
+                    <text-property name="heading">RIGHT_QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">D_STATUS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">D_STATUS</text-property>
+                    <text-property name="heading">D_STATUS</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">STRAND_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">RIGHT_QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">STRAND_ID</property>
+                    <property name="nativeName">STRAND_ID</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">QUES_ATTEMPTED</property>
+                    <property name="nativeName">QUES_ATTEMPTED</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="nativeName">RIGHT_QUES_ATTEMPTED</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">D_STATUS</property>
+                    <property name="nativeName">D_STATUS</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[ select strand_id, QUES_ATTEMPTED, RIGHT_QUES_ATTEMPTED, D_STATUS from user_topic_status where uid= 292 and strand_id<>-1 and D_STATUS=2;
+
+]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>STRAND_ID</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>strand_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>strand_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>QUES_ATTEMPTED</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>QUES_ATTEMPTED</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>QUES_ATTEMPTED</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>RIGHT_QUES_ATTEMPTED</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>RIGHT_QUES_ATTEMPTED</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>RIGHT_QUES_ATTEMPTED</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>D_STATUS</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>2</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>D_STATUS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>D_STATUS</design:label>
+            <design:formattingHints>
+              <design:displaySize>2</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <joint-data-set name="JointLevel" id="1123">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">Mediumlevel::D_STATUS</property>
+                    <property name="alias">Mediumlevel::D_STATUS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Mediumlevel::D_STATUS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Easylevel::STRAND_ID</property>
+                    <property name="alias">Easylevel::STRAND_ID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Easylevel::STRAND_ID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Mediumlevel::QUES_ATTEMPTED</property>
+                    <property name="alias">Mediumlevel::QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Mediumlevel::QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Mediumlevel::RIGHT_QUES_ATTEMPTED</property>
+                    <property name="alias">Mediumlevel::RIGHT_QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Mediumlevel::RIGHT_QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Easylevel::RIGHT_QUES_ATTEMPTED</property>
+                    <property name="alias">Easylevel::RIGHT_QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Easylevel::RIGHT_QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Easylevel::D_STATUS</property>
+                    <property name="alias">Easylevel::D_STATUS</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Easylevel::D_STATUS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Easylevel::QUES_ATTEMPTED</property>
+                    <property name="alias">Easylevel::QUES_ATTEMPTED</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Easylevel::QUES_ATTEMPTED</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">Mediumlevel::STRAND_ID</property>
+                    <property name="alias">Mediumlevel::STRAND_ID</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">Mediumlevel::STRAND_ID</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">Easylevel::STRAND_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">Easylevel::QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">Easylevel::RIGHT_QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">Easylevel::D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">Mediumlevel::STRAND_ID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">Mediumlevel::QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">Mediumlevel::RIGHT_QUES_ATTEMPTED</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">Mediumlevel::D_STATUS</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <simple-property-list name="dataSets">
+                <value>Easylevel</value>
+                <value>Mediumlevel</value>
+            </simple-property-list>
+            <list-property name="joinConditions">
+                <structure>
+                    <property name="joinType">left-out</property>
+                    <property name="joinOperator">eq</property>
+                    <property name="leftDataSet">Easylevel</property>
+                    <property name="rightDataSet">Mediumlevel</property>
+                    <expression name="leftExpression">dataSetRow["STRAND_ID"]</expression>
+                    <expression name="rightExpression">dataSetRow["STRAND_ID"]</expression>
+                </structure>
+            </list-property>
+        </joint-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="FutorMasterPage" id="8" extends="ReportsMainLib.FutorMasterPage">
+            <overridden-values>
+                <ref-entry baseId="28" id="28"/>
+                <ref-entry baseId="29" id="29"/>
+            </overridden-values>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <text id="30">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<B><H1><CENTER>NIKHAR'S REPORT ON POLYNOMIALS TOPIC
+
+</CENTER></H1></B>]]></text-property>
+        </text>
+        <text id="31">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<B>Dear parent</B>
+</br>
+In topic Polynoimals, there are 3 sub- topics. In each sub- topic, a child must master the concepts at three levels- Easy, Medium and hard.
+</br>
+</br>
+Nikhar has successfully mastered the topic- polynomials. Her performances in each of the sub-topics is as follows:]]></text-property>
+        </text>
+        <table id="1409">
+            <property name="marginTop">20pt</property>
+            <property name="marginLeft">10pt</property>
+            <property name="marginRight">10pt</property>
+            <property name="width">7.947916666666667in</property>
+            <column id="1422">
+                <property name="width">2.65625in</property>
+            </column>
+            <column id="1423">
+                <property name="width">5.28125in</property>
+            </column>
+            <column id="1424">
+                <property name="width">0.010416666666666666in</property>
+            </column>
+            <header>
+                <row id="1410">
+                    <cell id="1411">
+                        <property name="colSpan">2</property>
+                        <property name="rowSpan">1</property>
+                        <label id="1477">
+                            <property name="borderBottomColor">#00FFFF</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderLeftColor">#00FFFF</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderRightColor">#00FFFF</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderTopColor">#00FFFF</property>
+                            <property name="borderTopStyle">solid</property>
+                            <text-property name="text">                EASY                                                     MEDIUM                                              TIME SPENT                              </text-property>
+                        </label>
+                    </cell>
+                    <cell id="1413"/>
+                </row>
+            </header>
+            <detail>
+                <row id="1414">
+                    <cell id="1415">
+                        <property name="colSpan">2</property>
+                        <property name="rowSpan">1</property>
+                        <table id="1425">
+                            <property name="borderBottomColor">#00FFFF</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderLeftColor">#00FFFF</property>
+                            <property name="borderLeftStyle">solid</property>
+                            <property name="borderRightColor">#00FFFF</property>
+                            <property name="borderRightStyle">solid</property>
+                            <property name="borderTopColor">#00FFFF</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="width">7.9375in</property>
+                            <property name="dataSet">JointLevel</property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">Easylevel::STRAND_ID</property>
+                                    <text-property name="displayName">Easylevel::STRAND_ID</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["Easylevel::STRAND_ID"]</expression>
+                                    <property name="dataType">integer</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">Easylevel::QUES_ATTEMPTED</property>
+                                    <text-property name="displayName">Easylevel::QUES_ATTEMPTED</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["Easylevel::QUES_ATTEMPTED"]</expression>
+                                    <property name="dataType">integer</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">Easylevel::RIGHT_QUES_ATTEMPTED</property>
+                                    <text-property name="displayName">Easylevel::RIGHT_QUES_ATTEMPTED</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["Easylevel::RIGHT_QUES_ATTEMPTED"]</expression>
+                                    <property name="dataType">integer</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">Easylevel::D_STATUS</property>
+                                    <text-property name="displayName">Easylevel::D_STATUS</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["Easylevel::D_STATUS"]</expression>
+                                    <property name="dataType">integer</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">Mediumlevel::STRAND_ID</property>
+                                    <text-property name="displayName">Mediumlevel::STRAND_ID</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["Mediumlevel::STRAND_ID"]</expression>
+                                    <property name="dataType">integer</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">Mediumlevel::QUES_ATTEMPTED</property>
+                                    <text-property name="displayName">Mediumlevel::QUES_ATTEMPTED</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["Mediumlevel::QUES_ATTEMPTED"]</expression>
+                                    <property name="dataType">integer</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">Mediumlevel::RIGHT_QUES_ATTEMPTED</property>
+                                    <text-property name="displayName">Mediumlevel::RIGHT_QUES_ATTEMPTED</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["Mediumlevel::RIGHT_QUES_ATTEMPTED"]</expression>
+                                    <property name="dataType">integer</property>
+                                </structure>
+                                <structure>
+                                    <property name="name">Mediumlevel::D_STATUS</property>
+                                    <text-property name="displayName">Mediumlevel::D_STATUS</text-property>
+                                    <expression name="expression" type="javascript">dataSetRow["Mediumlevel::D_STATUS"]</expression>
+                                    <property name="dataType">integer</property>
+                                </structure>
+                            </list-property>
+                            <column id="1469">
+                                <property name="width">0.6666666666666666in</property>
+                            </column>
+                            <column id="1470">
+                                <property name="width">0.7708333333333334in</property>
+                            </column>
+                            <column id="1471">
+                                <property name="width">0.9270833333333334in</property>
+                            </column>
+                            <column id="1472">
+                                <property name="width">0.010416666666666666in</property>
+                            </column>
+                            <column id="1473">
+                                <property name="width">0.010416666666666666in</property>
+                            </column>
+                            <column id="1474">
+                                <property name="width">1.15625in</property>
+                            </column>
+                            <column id="1475">
+                                <property name="width">1.3854166666666667in</property>
+                            </column>
+                            <column id="1476">
+                                <property name="width">3.0104166666666665in</property>
+                            </column>
+                            <header>
+                                <row id="1426">
+                                    <cell id="1427">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <label id="1428">
+                                            <text-property name="text">Strand Id</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="1429">
+                                        <label id="1430">
+                                            <text-property name="text">Questions Attempted</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="1431">
+                                        <label id="1432">
+                                            <text-property name="text">Right Questions</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="1433">
+                                        <label id="1434">
+                                            <text-property name="text"></text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="1435"/>
+                                    <cell id="1437">
+                                        <label id="1438">
+                                            <text-property name="text">Questions Attempted</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="1439">
+                                        <label id="1440">
+                                            <text-property name="text">Right Questions</text-property>
+                                        </label>
+                                    </cell>
+                                    <cell id="1441">
+                                        <label id="1480">
+                                            <text-property name="text"></text-property>
+                                        </label>
+                                    </cell>
+                                </row>
+                            </header>
+                            <detail>
+                                <row id="1443">
+                                    <cell id="1444">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                        <data id="1445">
+                                            <property name="marginLeft">25%</property>
+                                            <property name="resultSetColumn">Easylevel::STRAND_ID</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="1446">
+                                        <data id="1447">
+                                            <property name="marginLeft">25pt</property>
+                                            <property name="resultSetColumn">Easylevel::QUES_ATTEMPTED</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="1448">
+                                        <data id="1449">
+                                            <property name="marginLeft">25pt</property>
+                                            <property name="resultSetColumn">Easylevel::RIGHT_QUES_ATTEMPTED</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="1450"/>
+                                    <cell id="1452"/>
+                                    <cell id="1454">
+                                        <data id="1455">
+                                            <property name="marginLeft">25pt</property>
+                                            <property name="resultSetColumn">Mediumlevel::QUES_ATTEMPTED</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="1456">
+                                        <data id="1457">
+                                            <property name="marginLeft">25pt</property>
+                                            <property name="resultSetColumn">Mediumlevel::RIGHT_QUES_ATTEMPTED</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="1458"/>
+                                </row>
+                            </detail>
+                            <footer>
+                                <row id="1460">
+                                    <cell id="1461">
+                                        <property name="borderBottomColor">#000000</property>
+                                        <property name="borderBottomStyle">solid</property>
+                                        <property name="borderLeftColor">#000000</property>
+                                        <property name="borderLeftStyle">solid</property>
+                                        <property name="borderRightColor">#000000</property>
+                                        <property name="borderRightStyle">solid</property>
+                                        <property name="borderTopColor">#000000</property>
+                                        <property name="borderTopStyle">solid</property>
+                                    </cell>
+                                    <cell id="1462"/>
+                                    <cell id="1463"/>
+                                    <cell id="1464"/>
+                                    <cell id="1465"/>
+                                    <cell id="1466"/>
+                                    <cell id="1467"/>
+                                    <cell id="1468"/>
+                                </row>
+                            </footer>
+                        </table>
+                    </cell>
+                    <cell id="1417"/>
+                </row>
+            </detail>
+            <footer>
+                <row id="1418">
+                    <cell id="1419"/>
+                    <cell id="1420"/>
+                    <cell id="1421"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>
